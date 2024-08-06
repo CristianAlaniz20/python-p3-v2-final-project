@@ -106,3 +106,37 @@ class Client:
 
         del type(self).all[self.id]
         self.id = None
+
+    @classmethod
+    def instance_from_db(cls, row):
+        client = cls.all.get(row[0])
+        if client:
+            client.first_name = row[1]
+            client.last_name = row[2]
+            client.phone_number = row[3]
+        else:
+            client = cls(row[1], row[2], row[3])
+            client.id = row[0]
+            cls.all[client.id] = client
+        return client
+
+    @classmethod
+    def get_all(cls):
+        sql = """
+            SELECT *
+            FROM clients
+        """
+
+        rows = CURSOR.execute(sql).fetchall()
+        return [cls.instance_from_db(row) for row in rows]
+
+    @classmethod
+    def find_by_id(cls, id):
+        sql = """
+            SELECT *
+            FROM clients
+            WHERE id = ?
+        """
+
+        row = CURSOR.execute(sql, (id,)).fetchone()
+        return cls.instance_from_db(row) if row else None
