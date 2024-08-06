@@ -79,4 +79,30 @@ class Client:
         self.id = CURSOR.lastrowid
         type(self).all[self.id] = self
 
-    
+    @classmethod
+    def create(cls, first_name, last_name, phone_number):
+        client = cls(first_name, last_name, phone_number)
+        client.save()
+        return client
+
+    def update(self):
+        sql = """
+            UPDATE clients
+            SET first_name = ?, last_name = ?, phone_number = ?
+            WHERE id = ?
+        """
+
+        CURSOR.execute(sql, (self.first_name, self.last_name, self.phone_number, self.id))
+        CONN.commit()
+
+    def delete(self):
+        sql = """
+        DELETE FROM clients
+        WHERE id = ?
+        """
+
+        CURSOR.execute(sql, (self.id,))
+        CONN.commit()
+
+        del type(self).all[self.id]
+        self.id = None
