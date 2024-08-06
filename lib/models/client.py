@@ -1,4 +1,4 @@
-from __init__ import CONN, CURSOR
+from .__init__ import CONN, CURSOR
 import re
 
 phone_number = r"(\d{3}-){2}\d{4}"
@@ -43,3 +43,24 @@ class Client:
             self._phone_number = phone_number
         else:
             raise ValueError("Enter phone number with the following pattern: 555-555-5555")
+
+    @classmethod
+    def create_table(cls):
+        sql = """
+            CREATE TABLE IF NOT EXISTS clients (
+            id INTEGER PRIMARY KEY,
+            first_name TEXT,
+            last_name TEXT,
+            phone_number TEXT)
+        """
+        CURSOR.execute(sql)
+        CONN.commit()
+
+    @classmethod
+    def drop_table(cls):
+        sql = """
+            DROP TABLE IF EXISTS clients;
+        """
+        CURSOR.execute(sql)
+        CONN.commit()
+    
