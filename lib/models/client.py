@@ -5,6 +5,9 @@ phone_number = r"(\d{3}-){2}\d{4}"
 phone_regex = re.compile(phone_number)
 
 class Client:
+
+    all = {}
+
     def __init__(self, first_name, last_name, phone_number, id=None):
         self.id = id
         self.first_name = first_name
@@ -63,4 +66,17 @@ class Client:
         """
         CURSOR.execute(sql)
         CONN.commit()
+    
+    def save(self):
+        sql = """
+            INSERT INTO clients (first_name, last_name, phone_number)
+            VALUES (?, ?, ?)
+        """
+
+        CURSOR.execute(sql, (self.first_name, self.last_name, self.phone_number))
+        CONN.commit()
+
+        self.id = CURSOR.lastrowid
+        type(self).all[self.id] = self
+
     
