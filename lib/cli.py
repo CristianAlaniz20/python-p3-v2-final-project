@@ -13,7 +13,6 @@ def invalid_input_message():
 
 def main():
     while True:
-        print("Program started!")
         main_menu()
         choice = input("> ")
         if choice == "e":
@@ -26,19 +25,16 @@ def main():
             invalid_input_message()
 
 def view_client_menu():
+    list_clients()
     while True:
-        list_clients()
         view_all_clients_menu()
         choice = input("> ")
-        number = int(choice)
-        if number:
-            client = select_client_by_enumerate_number(choice)
-            print(client)
-            client_menu(client)
-        elif choice == "p":
+        if choice == "p":
             main()
         elif choice == "exit" or choice == "e":
             exit_program()
+        elif (client := select_client_by_enumerate_number(choice)):
+            client_menu(client)
         else:
             invalid_input_message()
 
@@ -46,7 +42,9 @@ def client_menu(client):
     while True:
         client_view_menu()
         choice = input("> ")
-        if choice == "e":
+        if choice == "p":
+            view_client_menu()
+        elif choice == "e":
             exit_program()
         elif choice == "u":
             update_client(client)
@@ -58,7 +56,7 @@ def client_menu(client):
             invalid_input_message()
 
 def main_menu():
-    print("Please select an option:")
+    print("Welcome, please select an option:")
     print("Enter 'exit' or 'e' to exit the program")
     print("Enter 'view' or 'v' to view all clients")
     print("Enter 'select' or 's' to search for a client")

@@ -14,6 +14,7 @@ def show_client_info(client):
 
 def list_clients():
     clients = Client.get_all()
+    print(spacing)
     print("Clients list:")
     for i, client in enumerate(clients, start=1):
         print(f"{i}. {client.first_name} {client.last_name}")
@@ -21,9 +22,12 @@ def list_clients():
 
 def select_client_by_enumerate_number(choice):
     try:
-        client = Client.find_by_id(int(choice))
+        clients = Client.get_all()
+        client = clients[int(choice) - 1]
+        print(spacing)
         show_client_info(client)
         print(spacing)
+        return client
     except:
         print(f"Error: no client found for {choice}")
         print(spacing)
