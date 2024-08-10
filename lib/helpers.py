@@ -9,8 +9,8 @@ def exit_program():
     exit()
 
 def show_client_info(client):
-    print(client.first_name, client.last_name)
-    print(f"Phone number: {client.phone_number}")
+    print(f"Client Name: {client.first_name} {client.last_name}")
+    print(f"Phone Number: {client.phone_number}")
 
 def list_clients():
     clients = Client.get_all()

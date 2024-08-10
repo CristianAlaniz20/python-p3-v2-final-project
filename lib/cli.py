@@ -1,5 +1,4 @@
 # lib/cli.py
-import ipdb
 
 from helpers import (
     exit_program,
@@ -10,7 +9,7 @@ from helpers import (
 )
 
 def invalid_input_message():
-    print("invalid input")
+    print("Invalid input. Please try again.")
 
 def main():
     while True:
@@ -27,32 +26,36 @@ def main():
             invalid_input_message()
 
 def view_client_menu():
-    list_clients()
-    view_all_clients_menu()
-    choice = input("> ")
-    if choice == "exit" or choice == "e":
+    while True:
+        list_clients()
+        view_all_clients_menu()
+        choice = input("> ")
+        number = int(choice)
+        if number:
+            client = select_client_by_enumerate_number(choice)
+            print(client)
+            client_menu(client)
+        elif choice == "p":
+            main()
+        elif choice == "exit" or choice == "e":
             exit_program()
-    else:
-        if select_client_by_enumerate_number(choice):
-            print(select_client_by_enumerate_number(choice))
-            client_menu()
         else:
-            print("Hi from inside else statement")
+            invalid_input_message()
 
-def client_menu():
-    client_view_menu()
-    choice = input("> ")
-    if choice == "e":
+def client_menu(client):
+    while True:
+        client_view_menu()
+        choice = input("> ")
+        if choice == "e":
             exit_program()
-    elif choice == "u":
-        update_client()
-    elif choice == "d":
-        delete_client()
-    elif choice == "v":
-        pass
-    else:
-        invalid_input_message()
-        client_menu()
+        elif choice == "u":
+            update_client(client)
+        elif choice == "d":
+            delete_client(client)
+        elif choice == "v":
+            pass
+        else:
+            invalid_input_message()
 
 def main_menu():
     print("Please select an option:")
