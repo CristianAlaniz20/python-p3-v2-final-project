@@ -58,11 +58,15 @@ def delete_client(client):
     _input = input("> ")
     if _input == "yes":
         client.delete()
+        print(f"Client: {client.first_name} {client.last_name} succesfully deleted")
     elif _input == "no":
+        print(spacing)
         print("Client NOT deleted")
         show_client_info(client)
+        print(spacing)
     else:
-        print("Invalid input")
+        print("Invalid input. Please try again.")
+        print(spacing)
 
     
 
