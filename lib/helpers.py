@@ -33,27 +33,23 @@ def select_client_by_enumerate_number(choice):
         print(spacing)
 
 def update_client(client):
-    first_name = input("Enter the new first name: ")
-    try:
-        client.first_name = first_name
-    except Exception as exc:
-        print(f"Error: ", exc)
-    last_name = input("Enter the new last name: ")
-    client.last_name = last_name
-    phone_number = input("Enter the new phone number: ")
-    client.phone_number = phone_number
-    try:
-        client.update()
-        print("Succesfully updated!")
-        show_client_info(client)
-    except:
-        print(spacing)
-
-def attribute_modifier(attribute):
-    if attribute:
-        return attribute
+    print("HINT: first name as 'first_name', last name as 'last_name', or phone number as 'phone_number'")
+    attribute = input("Enter the client detail to update: ")
+    if attribute == "first_name" or attribute == "last_name" or attribute == "phone_number":
+        new_value = input("Enter the new name or phone number: ")
+        try:  
+            setattr(client, attribute, new_value)
+            client.update()
+            print(spacing)
+            print("Succesfully updated!")
+            show_client_info(client)
+            print(spacing)
+        except Exception as exc:
+            print(f"Error: ", exc)
+            print(spacing)
     else:
-        pass
+        print("Seems you had a typo typing in the client detail to update. Please try again.")
+        print(spacing)
         
 def delete_client(client):
     print("""
