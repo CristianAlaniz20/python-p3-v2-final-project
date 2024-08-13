@@ -60,9 +60,9 @@ def client_menu(client):
 
 def main_menu():
     print("Welcome, please select an option:")
-    print("Enter 'exit' or 'e' to exit the program")
-    print("Enter 'view' or 'v' to view all clients")
-    print("Enter 'select' or 's' to search for a client")
+    print("Enter 'e' to exit the program")
+    print("Enter 'v' to view all clients")
+    print("Enter 's' to search for a client")
 
 def view_all_clients_menu():
     print("Enter 'p' to go to the previous menu")
