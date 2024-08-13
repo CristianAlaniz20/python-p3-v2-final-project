@@ -5,7 +5,8 @@ from helpers import (
     list_clients,
     select_client_by_enumerate_number,
     update_client,
-    delete_client
+    delete_client,
+    add_client
 )
 
 def invalid_input_message():
@@ -31,8 +32,10 @@ def view_client_menu():
         choice = input("> ")
         if choice == "p":
             main()
-        elif choice == "exit" or choice == "e":
+        elif choice == "e":
             exit_program()
+        elif choice == 'a':
+            add_client()
         elif (client := select_client_by_enumerate_number(choice)):
             client_menu(client)
         else:
@@ -64,6 +67,7 @@ def main_menu():
 def view_all_clients_menu():
     print("Enter 'p' to go to the previous menu")
     print("Enter 'e' to exit the program")
+    print("Enter 'a' to add a client")
     print("Or select a client by entering their corresponding number")
 
 def client_view_menu():
