@@ -1,6 +1,9 @@
 from .__init__ import CONN, CURSOR
 import re
 
+_name = r"^[A-Za-z]+$"
+_name_regex = re.compile(_name)
+
 phone_number = r"(\d{3}-){2}\d{4}"
 phone_regex = re.compile(phone_number)
 
@@ -20,10 +23,10 @@ class Client:
 
     @first_name.setter
     def first_name(self, first_name):
-        if isinstance(first_name, str) and len(first_name):
+        if isinstance(first_name, str) and len(first_name) and _name_regex.fullmatch(first_name):
             self._first_name = first_name
         else:
-            raise ValueError("First name cannot be empty")
+            raise ValueError("First name cannot be empty and contains only letters")
     
     @property
     def last_name(self):
@@ -31,10 +34,10 @@ class Client:
 
     @last_name.setter
     def last_name(self, last_name):
-        if isinstance(last_name, str) and len(last_name):
+        if isinstance(last_name, str) and len(last_name) and _name_regex.fullmatch(last_name):
             self._last_name = last_name
         else:
-            raise ValueError("Last name cannot be empty")
+            raise ValueError("Last name cannot be empty and contains only letters")
 
     @property
     def phone_number(self):

@@ -34,7 +34,10 @@ def select_client_by_enumerate_number(choice):
 
 def update_client(client):
     first_name = input("Enter the new first name: ")
-    client.first_name = first_name
+    try:
+        client.first_name = first_name
+    except Exception as exc:
+        print(f"Error: ", exc)
     last_name = input("Enter the new last name: ")
     client.last_name = last_name
     phone_number = input("Enter the new phone number: ")
@@ -43,10 +46,15 @@ def update_client(client):
         client.update()
         print("Succesfully updated!")
         show_client_info(client)
-    except Exception as exc:
-        print("Error: ", exc)
+    except:
         print(spacing)
 
+def attribute_modifier(attribute):
+    if attribute:
+        return attribute
+    else:
+        pass
+        
 def delete_client(client):
     print("""
     Are you sure you want to delete this client?
