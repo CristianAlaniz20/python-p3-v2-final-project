@@ -68,7 +68,19 @@ def delete_client(client):
         print("Invalid input. Please try again.")
         print(spacing)
 
-    
+def add_client():
+    first_name = input("Enter the new client's first name: ")
+    last_name = input("Enter the new client's last name: ")
+    phone_number = input("Enter the new client's phone number: ")
+    try:
+        new_client = Client.create(first_name, last_name, phone_number)
+        print(spacing)
+        print("Client successfully added!")
+        show_client_info(new_client)
+        print(spacing)
+    except Exception as exc:
+        print("Error: ", exc)
+        print(spacing)
 
 def search_client_by_name():
     client = input("Type in client first and last name: ")
