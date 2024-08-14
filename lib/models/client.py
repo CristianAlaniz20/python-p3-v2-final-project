@@ -143,3 +143,14 @@ class Client:
 
         row = CURSOR.execute(sql, (id,)).fetchone()
         return cls.instance_from_db(row) if row else None
+
+    @classmethod
+    def find_by_column(cls, column, value):
+        sql = """
+            SELECT *
+            FROM clients
+            WHERE {} = ?
+        """.format(column)
+
+        rows = CURSOR.execute(sql, (value,)).fetchall()
+        return [cls.instance_from_db(row) for row in rows]

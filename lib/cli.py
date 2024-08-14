@@ -6,7 +6,8 @@ from helpers import (
     select_client_by_enumerate_number,
     update_client,
     delete_client,
-    add_client
+    add_client,
+    search_for_client
 )
 
 def invalid_input_message():
@@ -21,7 +22,7 @@ def main():
         elif choice == "v":
             view_client_menu()
         elif choice == "s":
-            search_client_by_name()
+            search_for_client()
         else:
             invalid_input_message()
 
