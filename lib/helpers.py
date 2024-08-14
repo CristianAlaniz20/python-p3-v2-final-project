@@ -86,13 +86,13 @@ def search_for_client():
     print("HINT: first name as 'first_name', last name as 'last_name', or phone number as 'phone_number'")
     attribute = input("Enter what client detail you want to search by: ")
     if attribute == "first_name" or attribute == "last_name" or attribute == "phone_number":
-        value = input("Enter client information: ")
+        value = input("Enter client information: ").capitalize()
         try:
             clients = Client.find_by_column(attribute, value)
             for client in clients:
                 show_client_info(client)
-        except Exception as exc:
-            print("Error: ", exc)
+        except:
+            print("No client found with that value.")
     else:
         print("Seems you had a typo typing in the client detail to search by. Please try again.")
         print(spacing)
