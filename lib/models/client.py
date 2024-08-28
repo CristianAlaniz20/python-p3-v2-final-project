@@ -17,6 +17,9 @@ class Client:
         self.last_name = last_name
         self.phone_number = phone_number
 
+    def __repr__(self):
+        return f"<Client {self.first_name} {self.last_name}, {self.phone_number}>"
+
     @property
     def first_name(self):
         return self._first_name
@@ -145,12 +148,12 @@ class Client:
         return cls.instance_from_db(row) if row else None
 
     @classmethod
-    def find_by_column(cls, column, value):
-        sql = """
-            SELECT *
-            FROM clients
-            WHERE {} = ?
-        """.format(column)
-
-        rows = CURSOR.execute(sql, (value,)).fetchall()
-        return [cls.instance_from_db(row) for row in rows]
+    def search(cls, first_name=None, last_name=None, phone_number=None):
+        results = []
+        print(cls.all)
+        for item in cls.all:
+            if (first_name is None or item.first_name == first_name) and \
+                (last_name is None or item.last_name == last_name) and \
+                (phone_number is None or item.phone_number == phone_number):
+                results.append(item)
+        return results
