@@ -12,8 +12,9 @@ def show_client_info(client):
     print(f"Client Name: {client.first_name} {client.last_name}")
     print(f"Phone Number: {client.phone_number}")
 
-def list_clients():
-    clients = Client.get_all()
+def list_clients(clients=None):
+    if clients == None:
+        clients = Client.get_all()
     print(spacing)
     print("Clients list:")
     for i, client in enumerate(clients, start=1):
@@ -96,8 +97,7 @@ def search_for_client():
                 (not last_name or client.last_name == last_name) and \
                 (not phone_number or client.phone_number == phone_number):
                 results.append(client)
-        for client in results:
-            print(show_client_info(client))
+        list_clients(results)
     except:
         print("No client found.")
 
