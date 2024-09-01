@@ -146,14 +146,3 @@ class Client:
 
         row = CURSOR.execute(sql, (id,)).fetchone()
         return cls.instance_from_db(row) if row else None
-
-    @classmethod
-    def search(cls, first_name=None, last_name=None, phone_number=None):
-        results = []
-        print(cls.all)
-        for item in cls.all:
-            if (first_name is None or item.first_name == first_name) and \
-                (last_name is None or item.last_name == last_name) and \
-                (phone_number is None or item.phone_number == phone_number):
-                results.append(item)
-        return results

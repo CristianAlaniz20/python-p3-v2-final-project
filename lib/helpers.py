@@ -83,13 +83,21 @@ def add_client():
         print(spacing)
 
 def search_for_client():
+    print(spacing)
     print("HINT: To skip entry leave blank and press enter.")
     first_name = input("Enter client's first name: ")
     last_name = input("Enter client's last name: ")
     phone_number = input("Enter client's phone number: ")
     try:
-        results = Client.search(first_name, last_name, phone_number)
-        print(results)
+        clients = Client.get_all()
+        results = []
+        for client in clients:
+            if (not first_name or client.first_name == first_name) and \
+                (not last_name or client.last_name == last_name) and \
+                (not phone_number or client.phone_number == phone_number):
+                results.append(client)
+        for client in results:
+            print(show_client_info(client))
     except:
         print("No client found.")
 
