@@ -15,8 +15,11 @@ def show_client_info(client):
 def list_clients(clients=None):
     if clients == None:
         clients = Client.get_all()
+        list_name = "Clients List:"
+    else:
+        list_name = "Search Results:"
     print(spacing)
-    print("Clients list:")
+    print(list_name)
     for client in clients:
         print(f"{client.id}. {client.first_name} {client.last_name}")
     print(spacing)

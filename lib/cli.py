@@ -26,10 +26,13 @@ def main():
         else:
             invalid_input_message()
 
-def view_client_menu():
-    list_clients()
+def view_client_menu(filtered_clients=None):
+    list_clients(filtered_clients)
     while True:
-        view_all_clients_menu()
+        if filtered_clients:
+            search_clients_menu()
+        else:
+            view_all_clients_menu()
         choice = input("> ")
         if choice == "p":
             main()
@@ -54,16 +57,16 @@ def search_client_menu():
             elif choice == "e":
                 exit_program()
             elif (client := select_client_by_number(choice)):
-                client_menu(client)
+                client_menu(client, client_search_results)
             else:
                 invalid_input_message()
 
-def client_menu(client):
+def client_menu(client, filtered_clients=None):
     while True:
         client_view_menu()
         choice = input("> ")
         if choice == "p":
-            view_client_menu()
+            view_client_menu(filtered_clients)
         elif choice == "e":
             exit_program()
         elif choice == "u":
