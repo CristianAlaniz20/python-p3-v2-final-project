@@ -89,17 +89,16 @@ def search_for_client():
     first_name = input("Enter client's first name: ")
     last_name = input("Enter client's last name: ")
     phone_number = input("Enter client's phone number: ")
-    try:
-        clients = Client.get_all()
-        results = []
-        for client in clients:
-            if (not first_name or client.first_name == first_name) and \
-                (not last_name or client.last_name == last_name) and \
-                (not phone_number or client.phone_number == phone_number):
-                results.append(client)
-        list_clients(results)
-    except:
-        print("No client found.")
+        
+    clients = Client.get_all()
+    results = []
+    for client in clients:
+        if (not first_name or client.first_name == first_name) and \
+            (not last_name or client.last_name == last_name) and \
+            (not phone_number or client.phone_number == phone_number):
+            results.append(client)
+    return results
+
 
 def list_trailers():
     pass

@@ -22,7 +22,7 @@ def main():
         elif choice == "v":
             view_client_menu()
         elif choice == "s":
-            search_for_client()
+            search_client_menu()
         else:
             invalid_input_message()
 
@@ -37,6 +37,21 @@ def view_client_menu():
             exit_program()
         elif choice == 'a':
             add_client()
+        elif (client := select_client_by_enumerate_number(choice)):
+            client_menu(client)
+        else:
+            invalid_input_message()
+    
+def search_client_menu():
+    (client_search_results := search_for_client())
+    list_clients(client_search_results)
+    while True:
+        search_clients_menu()
+        choice = input("> ")
+        if choice == "p":
+            main()
+        elif choice == "e":
+            exit_program()
         elif (client := select_client_by_enumerate_number(choice)):
             client_menu(client)
         else:
@@ -69,6 +84,11 @@ def view_all_clients_menu():
     print("Enter 'p' to go to the previous menu")
     print("Enter 'e' to exit the program")
     print("Enter 'a' to add a client")
+    print("Or select a client by entering their corresponding number")
+
+def search_clients_menu():
+    print("Enter 'p' to go to the previous menu")
+    print("Enter 'e' to exit the program")
     print("Or select a client by entering their corresponding number")
 
 def client_view_menu():
