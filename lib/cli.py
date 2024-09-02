@@ -3,7 +3,7 @@
 from helpers import (
     exit_program,
     list_clients,
-    select_client_by_enumerate_number,
+    select_client_by_number,
     update_client,
     delete_client,
     add_client,
@@ -37,7 +37,7 @@ def view_client_menu():
             exit_program()
         elif choice == 'a':
             add_client()
-        elif (client := select_client_by_enumerate_number(choice)):
+        elif (client := select_client_by_number(choice)):
             client_menu(client)
         else:
             invalid_input_message()
@@ -52,7 +52,7 @@ def search_client_menu():
             main()
         elif choice == "e":
             exit_program()
-        elif (client := select_client_by_enumerate_number(choice)):
+        elif (client := select_client_by_number(choice)):
             client_menu(client)
         else:
             invalid_input_message()

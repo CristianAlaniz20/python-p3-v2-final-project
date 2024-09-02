@@ -17,14 +17,13 @@ def list_clients(clients=None):
         clients = Client.get_all()
     print(spacing)
     print("Clients list:")
-    for i, client in enumerate(clients, start=1):
-        print(f"{i}. {client.first_name} {client.last_name}")
+    for client in clients:
+        print(f"{client.id}. {client.first_name} {client.last_name}")
     print(spacing)
 
-def select_client_by_enumerate_number(choice):
+def select_client_by_number(choice):
     try:
-        clients = Client.get_all()
-        client = clients[int(choice) - 1]
+        client = Client.find_by_id(choice)
         print(spacing)
         show_client_info(client)
         print(spacing)
