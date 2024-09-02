@@ -84,20 +84,28 @@ def add_client():
 
 def search_for_client():
     print(spacing)
+    print("Capitalize first letter of each name and enter phone number with XXX-XXX-XXXX format.")
     print("HINT: To skip entry leave blank and press enter.")
     first_name = input("Enter client's first name: ")
     last_name = input("Enter client's last name: ")
     phone_number = input("Enter client's phone number: ")
-        
-    clients = Client.get_all()
-    results = []
-    for client in clients:
-        if (not first_name or client.first_name == first_name) and \
-            (not last_name or client.last_name == last_name) and \
-            (not phone_number or client.phone_number == phone_number):
-            results.append(client)
-    return results
 
+    if not first_name and not last_name and not phone_number:
+            print("No clients found. At least one field must not be empty.")
+            print(spacing)
+    elif first_name or last_name or phone_number:
+        clients = Client.get_all()
+        results = []
+        for client in clients:
+            if (not first_name or client.first_name == first_name) and \
+                (not last_name or client.last_name == last_name) and \
+                (not phone_number or client.phone_number == phone_number):
+                results.append(client)
+        if results:
+            return results
+        else:
+            print(f"Error: Check spelling or phone number format. No client found for {first_name} {last_name} {phone_number}")
+            print(spacing)
 
 def list_trailers():
     pass

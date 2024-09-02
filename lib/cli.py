@@ -44,18 +44,19 @@ def view_client_menu():
     
 def search_client_menu():
     (client_search_results := search_for_client())
-    list_clients(client_search_results)
-    while True:
-        search_clients_menu()
-        choice = input("> ")
-        if choice == "p":
-            main()
-        elif choice == "e":
-            exit_program()
-        elif (client := select_client_by_number(choice)):
-            client_menu(client)
-        else:
-            invalid_input_message()
+    if client_search_results:
+        list_clients(client_search_results)
+        while True:
+            search_clients_menu()
+            choice = input("> ")
+            if choice == "p":
+                main()
+            elif choice == "e":
+                exit_program()
+            elif (client := select_client_by_number(choice)):
+                client_menu(client)
+            else:
+                invalid_input_message()
 
 def client_menu(client):
     while True:
