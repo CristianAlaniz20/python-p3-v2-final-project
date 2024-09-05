@@ -1,3 +1,4 @@
+from .__init__ import CONN, CURSOR
 from .client import Client
 
 class Trailer:
@@ -27,3 +28,22 @@ class Trailer:
             return self._available = False
         else:
             return self._available = True
+
+    @classmethod
+    def create_table(cls):
+        sql = """
+            CREATE TABLE IF NOT EXISTS trailers (
+            id INTEGER PRIMARY KEY,
+            client_renting_trailer INTEGER,
+            available BOOLEAN)
+        """
+        CURSOR.execute(sql)
+        CONN.commit()
+
+    @classmethod
+    def drop_table(cls):
+        sql = """
+            DROP TABLE IF EXISTS trailers;
+        """
+        CURSOR.execute(sql)
+        CONN.commit()
