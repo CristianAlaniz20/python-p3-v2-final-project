@@ -71,3 +71,25 @@ class Trailer:
         trailer = cls(client_renting_trailer, available)
         trailer.save()
         return trailer
+
+    def update(self):
+        sql = """
+            UPDATE trailers
+            SET client_renting_trailer = ?, available = ?
+            WHERE id = ?
+        """
+
+        CURSOR.execute(sql, (self.client_renting_trailer, self.available, self.id))
+        CONN.commit()
+
+    def delete(self):
+        sql = """
+        DELETE FROM trailers
+        WHERE id = ?
+        """
+
+        CURSOR.execute(sql, (self.id,))
+        CONN.commit()
+
+        del type(self).all[self.id]
+        self.id = None
