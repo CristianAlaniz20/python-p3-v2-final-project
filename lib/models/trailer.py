@@ -2,6 +2,9 @@ from .__init__ import CONN, CURSOR
 from .client import Client
 
 class Trailer:
+    
+    all = {}
+    
     def __init__(self, client_renting_trailer, available=True, id=None):
         self.id = id
         self.client_renting_trailer = client_renting_trailer
@@ -47,3 +50,21 @@ class Trailer:
         """
         CURSOR.execute(sql)
         CONN.commit()
+
+    def save(self):
+        sql = """
+            INSERT INTO trailers (client_renting_trailer, available)
+            VALUES (?, ?)
+        """
+
+        CURSOR.execute(sql, (self.client_renting_trailer, self.available))
+        CONN.commit()
+
+        self.id = CURSOR.lastrowid
+        type(self).all[self.id] = self
+
+    @classmethod
+    def create(cls, client_renting_trailer, available):
+        trailer = cls(client_renting_trailer, available)
+        trailer.save()
+        return trailer
