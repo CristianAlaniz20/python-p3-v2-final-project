@@ -4,22 +4,25 @@ from .client import Client
 class Trailer:
     
     all = {}
-    
-    def __init__(self, client_renting_trailer, available=True, id=None):
+
+    def __init__(self, client_renting_trailer=None, available=None, id=None):
         self.id = id
         self.client_renting_trailer = client_renting_trailer
         self.available = available
-    
+
     @property
     def client_renting_trailer(self):
         return self._client_renting_trailer
 
     @client_renting_trailer.setter
     def client_renting_trailer(self, client_renting_trailer):
-        if isinstance(client_renting_trailer, int) and Client.find_by_id(client_renting_trailer):
-            return self._client_renting_trailer = client_renting_trailer
+        if client_renting_trailer:
+            if isinstance(client_renting_trailer, int) and Client.find_by_id(client_renting_trailer):
+                self._client_renting_trailer = client_renting_trailer
+            else:
+                raise ValueError("No client found. Ensure that client exists.")
         else:
-            raise ValueError("No client found. Ensure that client exists.")
+            self._client_renting_trailer = client_renting_trailer
 
     @property
     def available(self):
@@ -28,9 +31,9 @@ class Trailer:
     @available.setter
     def available(self, available):
         if self.client_renting_trailer:
-            return self._available = False
+            self._available = False
         else:
-            return self._available = True
+            self._available = True
 
     @classmethod
     def create_table(cls):
@@ -64,7 +67,7 @@ class Trailer:
         type(self).all[self.id] = self
 
     @classmethod
-    def create(cls, client_renting_trailer, available):
+    def create(cls, client_renting_trailer=None, available=None):
         trailer = cls(client_renting_trailer, available)
         trailer.save()
         return trailer
