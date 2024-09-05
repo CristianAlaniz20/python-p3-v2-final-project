@@ -93,3 +93,36 @@ class Trailer:
 
         del type(self).all[self.id]
         self.id = None
+
+    @classmethod
+    def instance_from_db(cls, row):
+        trailer = cls.all.get(row[0])
+        if trailer:
+            trailer.client_renting_trailer = row[1]
+            trailer.available = row[2]
+        else:
+            trailer = cls(row[1], row[2])
+            trailer.id = row[0]
+            cls.all[trailer.id] = trailer
+        return trailer
+
+    @classmethod
+    def get_all(cls):
+        sql = """
+            SELECT *
+            FROM trailers
+        """
+
+        rows = CURSOR.execute(sql).fetchall()
+        return [cls.instance_from_db(row) for row in rows]
+
+    @classmethod
+    def find_by_id(cls, id):
+        sql = """
+            SELECT *
+            FROM trailers
+            WHERE id = ?
+        """
+
+        row = CURSOR.execute(sql, (id,)).fetchone()
+        return cls.instance_from_db(row) if row else None
