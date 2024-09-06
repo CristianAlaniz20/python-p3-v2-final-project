@@ -111,6 +111,13 @@ def search_for_client():
             print(f"Error: Check spelling or phone number format. No client found for {first_name} {last_name} {phone_number}")
             print(spacing)
 
+def show_trailer_info(trailer):
+    if trailer.client_renting_trailer:
+        select_client_by_number(trailer.client_renting_trailer)
+    else:
+        print("Client Renting Trailer: Nobody")
+    print(f"Available: {trailer.available}")
+
 def list_trailers():
     pass
 
@@ -118,11 +125,11 @@ def search_for_trailer():
     print(spacing)
     trailer_number = input("Type in trailer number: ")
     if trailer_number:
-        trailers = Trailer.get_all()
-        for trailer in trailers:
-            if trailer.id == trailer_number:
-                show_trailer_info(trailer)
-            else:
-                print(f"Error: No trailer found matching {trailer_number} number.")
+        if (trailer := Trailer.find_by_id(int(trailer_number))):
+            show_trailer_info(trailer)
+        else:
+            print(f"Error: No trailer found matching {trailer_number} number.")
+            print(spacing)
     else:
         print("Error: Must enter a trailer number.")
+        print(spacing)

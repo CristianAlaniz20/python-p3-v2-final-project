@@ -25,7 +25,7 @@ def main():
         elif choice == "sc":
             search_client_menu()
         elif choice == "st":
-            pass
+            search_for_trailer()
         else:
             invalid_input_message()
 
@@ -85,7 +85,8 @@ def main_menu():
     print("Welcome, please select an option:")
     print("Enter 'e' to exit the program")
     print("Enter 'v' to view all clients")
-    print("Enter 's' to search for a client")
+    print("Enter 'sc' to search for a client")
+    print("Enter 'st' to search for a trailer")
 
 def view_all_clients_menu():
     print("Enter 'p' to go to the previous menu")
