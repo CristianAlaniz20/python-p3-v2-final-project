@@ -7,7 +7,8 @@ from helpers import (
     update_client,
     delete_client,
     add_client,
-    search_for_client
+    search_for_client,
+    search_for_trailer
 )
 
 def invalid_input_message():
@@ -21,8 +22,10 @@ def main():
             exit_program()
         elif choice == "v":
             view_client_menu()
-        elif choice == "s":
+        elif choice == "sc":
             search_client_menu()
+        elif choice == "st":
+            pass
         else:
             invalid_input_message()
 

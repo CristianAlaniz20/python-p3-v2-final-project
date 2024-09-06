@@ -1,6 +1,7 @@
 # lib/helpers.py
 
 from models.client import Client
+from models.trailer import Trailer
 
 spacing = "-----------------------------"
 
@@ -113,6 +114,15 @@ def search_for_client():
 def list_trailers():
     pass
 
-def search_trailer():
-    trailer = input("Type in trailer number: ")
-    pass
+def search_for_trailer():
+    print(spacing)
+    trailer_number = input("Type in trailer number: ")
+    if trailer_number:
+        trailers = Trailer.get_all()
+        for trailer in trailers:
+            if trailer.id == trailer_number:
+                show_trailer_info(trailer)
+            else:
+                print(f"Error: No trailer found matching {trailer_number} number.")
+    else:
+        print("Error: Must enter a trailer number.")
