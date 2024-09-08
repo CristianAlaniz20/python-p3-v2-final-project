@@ -117,6 +117,7 @@ def show_trailer_info(trailer):
     else:
         print("Client Renting Trailer: Nobody")
     print(f"Available: {trailer.available}")
+    print(spacing)
 
 def list_trailers():
     pass
@@ -127,9 +128,17 @@ def search_for_trailer():
     if trailer_number:
         if (trailer := Trailer.find_by_id(int(trailer_number))):
             show_trailer_info(trailer)
+            return trailer
         else:
             print(f"Error: No trailer found matching {trailer_number} number.")
             print(spacing)
     else:
         print("Error: Must enter a trailer number.")
         print(spacing)
+
+def update_trailer_client(trailer):
+    new_client = input("Enter the new client's details to rent this trailer: ")
+
+#Grab/Create Client
+#Create new client if client does not exist
+#If client exists, assign to trailer

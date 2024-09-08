@@ -8,7 +8,8 @@ from helpers import (
     delete_client,
     add_client,
     search_for_client,
-    search_for_trailer
+    search_for_trailer,
+    update_trailer_client
 )
 
 def invalid_input_message():
@@ -25,7 +26,7 @@ def main():
         elif choice == "sc":
             search_client_menu()
         elif choice == "st":
-            search_for_trailer()
+            search_for_trailer_menu()
         else:
             invalid_input_message()
 
@@ -81,6 +82,24 @@ def client_menu(client, filtered_clients=None):
         else:
             invalid_input_message()
 
+def search_for_trailer_menu():
+    (searched_trailer := search_for_trailer())
+    if searched_trailer:
+        while True:
+            search_for_trailer_options()
+            choice = input("> ")
+            if choice == "p":
+                main()
+            elif choice == "e":
+                exit_program()
+            elif choice == "u":
+                update_trailer_client(searched_trailer)
+            elif choice == "d":
+                delete_trailer(trailer)
+            elif choice == "c":
+                find_client_by_trailer(trailer)
+
+
 def main_menu():
     print("Welcome, please select an option:")
     print("Enter 'e' to exit the program")
@@ -105,6 +124,13 @@ def client_view_menu():
     print("Enter 'u' to update client details")
     print("Enter 'd' to delete this client")
     print("Enter 'v' to view all the trailers this client has rented")
+
+def search_for_trailer_options():
+    print("Enter 'p' to go to the previous menu")
+    print("Enter 'e' to exit the program")
+    print("Enter 'u' to update client renting this trailer")
+    print("Enter 'd' to delete this trailer")
+    print("Enter 'c' to look at client details")
 
 if __name__ == "__main__":
     main()
