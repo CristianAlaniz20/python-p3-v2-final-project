@@ -73,6 +73,7 @@ def delete_client(client):
         print(spacing)
 
 def add_client():
+    print("HINT: Capitalize first letter of each name and enter phone number with XXX-XXX-XXXX format.")
     first_name = input("Enter the new client's first name: ")
     last_name = input("Enter the new client's last name: ")
     phone_number = input("Enter the new client's phone number: ")

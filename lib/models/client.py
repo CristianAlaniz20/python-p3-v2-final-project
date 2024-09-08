@@ -1,7 +1,7 @@
 from .__init__ import CONN, CURSOR
 import re
 
-_name = r"^[A-Za-z]+$"
+_name = r"^[A-Z][A-z]*(\s[A-Z][A-z]*)*$"
 _name_regex = re.compile(_name)
 
 phone_number = r"(\d{3}-){2}\d{4}"
@@ -29,7 +29,7 @@ class Client:
         if isinstance(first_name, str) and len(first_name) and _name_regex.fullmatch(first_name):
             self._first_name = first_name
         else:
-            raise ValueError("First name cannot be empty and contains only letters")
+            raise ValueError("First name cannot be empty, contains only letters, and is capitalized.")
     
     @property
     def last_name(self):
@@ -40,7 +40,7 @@ class Client:
         if isinstance(last_name, str) and len(last_name) and _name_regex.fullmatch(last_name):
             self._last_name = last_name
         else:
-            raise ValueError("Last name cannot be empty and contains only letters")
+            raise ValueError("Last name cannot be empty, contains only letters, and is capitalized.")
 
     @property
     def phone_number(self):
