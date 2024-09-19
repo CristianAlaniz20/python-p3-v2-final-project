@@ -88,29 +88,29 @@ def add_client():
         print(spacing)
 
 def search_for_client():
-    print(spacing)
-    print("Capitalize first letter of each name and enter phone number with XXX-XXX-XXXX format.")
-    print("HINT: To skip entry leave blank and press enter.")
-    first_name = input("Enter client's first name: ")
-    last_name = input("Enter client's last name: ")
-    phone_number = input("Enter client's phone number: ")
+        print(spacing)
+        print("Capitalize first letter of each name and enter phone number with XXX-XXX-XXXX format.")
+        print("HINT: To skip entry leave blank and press enter.")
+        first_name = input("Enter client's first name: ")
+        last_name = input("Enter client's last name: ")
+        phone_number = input("Enter client's phone number: ")
 
-    if not first_name and not last_name and not phone_number:
+        if not first_name and not last_name and not phone_number:
             print("No clients found. At least one field must not be empty.")
             print(spacing)
-    elif first_name or last_name or phone_number:
-        clients = Client.get_all()
-        results = []
-        for client in clients:
-            if (not first_name or client.first_name == first_name) and \
-                (not last_name or client.last_name == last_name) and \
-                (not phone_number or client.phone_number == phone_number):
-                results.append(client)
-        if results:
-            return results
-        else:
-            print(f"Error: Check spelling or phone number format. No client found for {first_name} {last_name} {phone_number}")
-            print(spacing)
+        elif first_name or last_name or phone_number:
+            clients = Client.get_all()
+            results = []
+            for client in clients:
+                if (not first_name or client.first_name == first_name) and \
+                    (not last_name or client.last_name == last_name) and \
+                    (not phone_number or client.phone_number == phone_number):
+                    results.append(client)
+            if results:
+                return results
+            else:
+                print(f"Error: Check spelling or phone number format. No client found for {first_name} {last_name} {phone_number}")
+                print(spacing)
 
 def show_trailer_info(trailer):
     if trailer.client_renting_trailer:
@@ -137,9 +137,41 @@ def search_for_trailer():
         print("Error: Must enter a trailer number.")
         print(spacing)
 
+#If client already exists, assign client to trailer
+#Else 1. Say client does not exist and 2. Ask/give option to create the new client with information that was already put in.
 def update_trailer_client(trailer):
-    new_client = input("Enter the new client's details to rent this trailer: ")
+    print("Enter the rentor's information:")
+    first_name = input("First Name: ")
+    last_name = input("Last Name: ")
+    phone_number = input("Phone Number: ")
 
-#Grab/Create Client
-#Create new client if client does not exist
-#If client exists, assign to trailer
+    #Search for client with fullmatching first name, last name, and phone number
+    existing_client = None
+    clients = Client.get_all()
+    for client in clients:
+        if client.first_name == first_name and client.last_name == last_name and client.phone_number == phone_number:
+            existing_client = client
+
+    if existing_client:
+        try:
+            setattr(trailer, "client_renting_trailer", existing_client.id)
+            setattr(trailer, "available", trailer.available)
+            trailer.update()
+            print("Succesfully updated!")
+            show_trailer_info(trailer)
+            print(spacing)
+        except Exception as exc:
+            print(f"Error: ", exc)
+            print(spacing)
+    else:
+            print(f"No client found matching {first_name} {last_name} {phone_number}")
+            print(spacing)
+
+#CLIENTS
+    #After search client results, even if client is not on the results list, if id entered, client is selected. FIX bug 
+
+#TRAILERS
+    #Attempt to assign client to trailer
+    #If client does not exist, give message that client does not exist, THEN
+    #Give option to create new Client
+    #Give client option to assign a trailer to them

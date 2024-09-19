@@ -96,9 +96,7 @@ def search_for_trailer_menu():
             elif choice == "u":
                 update_trailer_client(searched_trailer)
             elif choice == "d":
-                delete_trailer(trailer)
-            elif choice == "c":
-                find_client_by_trailer(trailer)
+                delete_trailer(searched_trailer)
 
 
 def main_menu():
@@ -131,7 +129,6 @@ def search_for_trailer_options():
     print("Enter 'e' to exit the program")
     print("Enter 'u' to update client renting this trailer")
     print("Enter 'd' to delete this trailer")
-    print("Enter 'c' to look at client details")
 
 if __name__ == "__main__":
     main()
