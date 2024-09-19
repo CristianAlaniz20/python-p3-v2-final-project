@@ -187,6 +187,23 @@ def update_trailer_client(trailer):
         print("Invalid input. Please try again.")
         print(spacing)
 
+def delete_trailer(trailer):
+    print("""
+    Are you sure you want to delete this trailer?
+    Enter 'yes' or 'no'""")
+    _input = input("> ")
+    if _input == "yes":
+        trailer.delete()
+        print(f"Trailer succesfully deleted")
+    elif _input == "no":
+        print(spacing)
+        print("Trailer NOT deleted")
+        show_trailer_info(trailer)
+        print(spacing)
+    else:
+        print("Invalid input. Please try again.")
+        print(spacing)
+
 #CLIENTS
     #After search client results, even if client is not on the results list, if id entered, client is selected. FIX bug 
 

@@ -9,7 +9,8 @@ from helpers import (
     add_client,
     search_for_client,
     search_for_trailer,
-    update_trailer_client
+    update_trailer_client,
+    delete_trailer
 )
 
 def invalid_input_message():
