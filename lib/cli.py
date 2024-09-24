@@ -10,7 +10,8 @@ from helpers import (
     search_for_client,
     search_for_trailer,
     update_trailer_client,
-    delete_trailer
+    delete_trailer,
+    list_trailers
 )
 
 def invalid_input_message():
@@ -22,10 +23,12 @@ def main():
         choice = input("> ")
         if choice == "e":
             exit_program()
-        elif choice == "v":
+        elif choice == "vc":
             view_client_menu()
         elif choice == "sc":
             search_client_menu()
+        elif choice == "vt":
+            list_trailers()
         elif choice == "st":
             search_for_trailer_menu()
         else:
@@ -103,8 +106,9 @@ def search_for_trailer_menu():
 def main_menu():
     print("Welcome, please select an option:")
     print("Enter 'e' to exit the program")
-    print("Enter 'v' to view all clients")
+    print("Enter 'vc' to view list of clients")
     print("Enter 'sc' to search for a client")
+    print("Enter 'vt' to view list of trailers")
     print("Enter 'st' to search for a trailer")
 
 def view_all_clients_menu():

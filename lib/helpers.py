@@ -120,8 +120,30 @@ def show_trailer_info(trailer):
     print(f"Available: {trailer.available}")
     print(spacing)
 
+#print list with ALL trailers, only trailers being rented, or only trailers available
 def list_trailers():
-    pass
+    print("""
+    To view a list of all trailers enter: all
+    To view a list of trailers being rented enter: rented
+    to view a list of trailers available enter: available
+    """)
+    _input = input("> ")
+    if _input == "all":
+        for trailer in Trailer.get_all():
+            print(f"Trailer #: {trailer.id}") 
+            show_trailer_info(trailer)
+    elif _input == "rented":
+        for trailer in Trailer.get_all():
+            if trailer.client_renting_trailer:
+                print(f"Trailer #: {trailer.id}") 
+                show_trailer_info(trailer)
+    elif _input == "available":
+        for trailer in Trailer.get_all():
+            if trailer.available == True:
+                print(f"Trailer #: {trailer.id}") 
+    else:
+        print("Invalid input. Please try again.")
+        print(spacing)
 
 def search_for_trailer():
     print(spacing)
