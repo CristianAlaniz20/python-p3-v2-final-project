@@ -129,7 +129,8 @@ def list_trailers():
     print("""
     To view a list of all trailers enter: all
     To view a list of trailers being rented enter: rented
-    to view a list of trailers available enter: available
+    To view a list of trailers available enter: available
+    To add a trailer enter: add
     """)
     _input = input("> ")
     if _input == "all":
@@ -145,6 +146,8 @@ def list_trailers():
         for trailer in Trailer.get_all():
             if trailer.available == True:
                 print(f"Trailer #: {trailer.id}") 
+    elif _input == "add":
+        add_trailer()
     else:
         print("Invalid input. Please try again.")
         print(spacing)
@@ -228,6 +231,18 @@ def delete_trailer(trailer):
         print(spacing)
     else:
         print("Invalid input. Please try again.")
+        print(spacing)
+
+def add_trailer():
+    try:
+        new_trailer = Trailer.create()
+        print(spacing)
+        print("Trailer successfully added!")
+        print(f"Trailer# {new_trailer.id}")
+        show_trailer_info(new_trailer)
+        print(spacing)
+    except Exception as exc:
+        print("Error: ", exc)
         print(spacing)
 
 #CLIENTS
