@@ -5,6 +5,10 @@ from models.trailer import Trailer
 
 spacing = "-----------------------------"
 
+def create_db_tables():
+    Client.create_table()
+    Trailer.create_table()
+
 def exit_program():
     print("Program closed, goodbye!")
     exit()

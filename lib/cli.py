@@ -1,6 +1,7 @@
 # lib/cli.py
 
 from helpers import (
+    create_db_tables,
     exit_program,
     list_clients,
     select_client_by_number,
@@ -18,6 +19,7 @@ def invalid_input_message():
     print("Invalid input. Please try again.")
 
 def main():
+    create_db_tables()
     while True:
         main_menu()
         choice = input("> ")
