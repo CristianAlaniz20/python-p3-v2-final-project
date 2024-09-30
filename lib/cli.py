@@ -12,7 +12,10 @@ from helpers import (
     search_for_trailer,
     update_trailer_client,
     delete_trailer,
-    list_trailers
+    list_trailers,
+    add_trailer,
+    is_empty,
+    print_list
 )
 
 def invalid_input_message():
@@ -122,7 +125,7 @@ def list_trailers_menu():
     while True:
         #If no trailers in db, redirect to empty_trailer_list_menu
         trailer_list = list_trailers()
-        if len(trailer_list) == 0:
+        if is_empty(trailer_list):
             empty_trailer_list_menu()
         #Else execute code underneath
         else:
@@ -133,16 +136,26 @@ def list_trailers_menu():
             elif choice == "e":
                 exit_program()
             elif choice == "all":
-                list_trailers()
+                print_list(trailer_list)
                 search_for_trailer_verification_menu()
             elif choice == "rented":
                 is_rented = lambda trailer: trailer.client_renting_trailer is not None
-                list_trailers(is_rented)
-                search_for_trailer_verification_menu()
+                filtered_trailer_list = list_trailers(is_rented)
+                if is_empty(filtered_trailer_list):
+                    print("There are no trailers currently being rented")
+                    list_trailers_menu()
+                else:
+                    print_list(filtered_trailer_list)
+                    search_for_trailer_verification_menu()
             elif choice == "available":
                 is_available = lambda trailer: trailer.available is not False
-                list_trailers(is_available)
-                search_for_trailer_verification_menu()
+                filtered_trailer_list = list_trailers(is_available)
+                if is_empty(filtered_trailer_list):
+                    print("There no trailers currently available")
+                    list_trailers_menu()
+                else:
+                    print_list(filtered_trailer_list)
+                    search_for_trailer_verification_menu()
             elif choice == "add":
                 add_trailer()
             else:

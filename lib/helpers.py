@@ -125,11 +125,21 @@ def show_trailer_info(trailer):
     print(f"Available: {trailer.available}")
     print(spacing)
 
+def is_empty(lst):
+    return len(lst) == 0
+
 def list_trailers(condition=None):
+    trailer_list = []
     if condition:
-        return [show_trailer_info(trailer) for trailer in Trailer.get_all() if condition(trailer)]
+        [trailer_list.append(trailer) for trailer in Trailer.get_all() if condition(trailer)]
+        return trailer_list
     else:
-        return [show_trailer_info(trailer) for trailer in Trailer.get_all()]
+        [trailer_list.append(trailer) for trailer in Trailer.get_all()]
+        return trailer_list
+
+def print_list(lst):
+    for trailer in lst:
+        show_trailer_info(trailer)
 
 def search_for_trailer():
     print(spacing)
