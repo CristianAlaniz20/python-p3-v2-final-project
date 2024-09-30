@@ -120,24 +120,41 @@ def search_for_trailer_menu():
 #Should A. Give option to select type of list. / B. Be able to select a trailer from the list. / C. Give action options for trailer chosen.
 def list_trailers_menu():
     while True:
-        list_trailers_options()
+        #If no trailers in db, redirect to empty_trailer_list_menu
+        trailer_list = list_trailers()
+        if len(trailer_list) == 0:
+            empty_trailer_list_menu()
+        #Else execute code underneath
+        else:
+            list_trailers_options()
+            choice = input("> ")
+            if choice == "p":
+                main()
+            elif choice == "e":
+                exit_program()
+            elif choice == "all":
+                list_trailers()
+                search_for_trailer_verification_menu()
+            elif choice == "rented":
+                is_rented = lambda trailer: trailer.client_renting_trailer is not None
+                list_trailers(is_rented)
+                search_for_trailer_verification_menu()
+            elif choice == "available":
+                is_available = lambda trailer: trailer.available is not False
+                list_trailers(is_available)
+                search_for_trailer_verification_menu()
+            elif choice == "add":
+                add_trailer()
+            else:
+                invalid_input_message()
+
+def empty_trailer_list_menu():
+    while True:
+        empty_trailer_list_options()
         choice = input("> ")
         if choice == "p":
             main()
-        elif choice == "e":
-            exit_program()
-        elif choice == "all":
-            list_trailers()
-            search_for_trailer_verification_menu()
-        elif choice == "rented":
-            is_rented = lambda trailer: trailer.client_renting_trailer is not None
-            list_trailers(is_rented)
-            search_for_trailer_verification_menu()
-        elif choice == "available":
-            is_available = lambda trailer: trailer.available is not False
-            list_trailers(is_available)
-            search_for_trailer_verification_menu()
-        elif choice == "add":
+        elif choice == "a":
             add_trailer()
         else:
             invalid_input_message()
@@ -190,6 +207,11 @@ def list_trailers_options():
     print("Enter 'rented' to view a list of trailers being rented")
     print("Enter 'available' to view a list of trailers available")
     print("Enter 'add' to add a trailer")
+
+def empty_trailer_list_options():
+    print("HINT: It appears there are no trailers. Please select an option:")
+    print("Enter 'p' to go to the previous menu")
+    print("Enter 'a' to add a trailer")
 
 if __name__ == "__main__":
     main()
