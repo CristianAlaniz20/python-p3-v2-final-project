@@ -127,7 +127,7 @@ def show_trailer_info(trailer):
 
 def list_trailers(condition=None):
     if condition:
-        return [show_trailer_info(trailer) for trailer in Trailer.get_all() if condition]
+        return [show_trailer_info(trailer) for trailer in Trailer.get_all() if condition(trailer)]
     else:
         return [show_trailer_info(trailer) for trailer in Trailer.get_all()]
 
