@@ -30,7 +30,7 @@ def main():
         elif choice == "sc":
             search_client_menu()
         elif choice == "vt":
-            list_trailers()
+            list_trailers_menu()
         elif choice == "st":
             search_for_trailer_menu()
         else:
@@ -104,6 +104,29 @@ def search_for_trailer_menu():
             elif choice == "d":
                 delete_trailer(searched_trailer)
 
+#Should A. Give option to select type of list. / B. Be able to select a trailer from the list. / C. Give action options for trailer chosen.
+def list_trailers_menu():
+    while True:
+        list_trailers_options()
+        choice = input("> ")
+        if choice == "all":
+            print(list_trailers())
+        elif choice == "rented":
+            is_rented = lambda trailer: trailer.client_renting_trailer is not None
+            print(list_trailers(is_rented))
+        elif choice == "available":
+            is_available = lambda trailer: trailer.available is not None
+            print(list_trailers(is_available))
+        elif choice == "add":
+            add_trailer()
+        else:
+            invalid_input_message()
+        search_for_trailer_menu()
+
+#Issues
+    #If list is empty, show message to say that
+    #Add previous option
+
 
 def main_menu():
     print("Welcome, please select an option:")
@@ -136,6 +159,12 @@ def search_for_trailer_options():
     print("Enter 'e' to exit the program")
     print("Enter 'u' to update client renting this trailer")
     print("Enter 'd' to delete this trailer")
+
+def list_trailers_options():
+    print("To view a list of all trailers enter: all")
+    print("To view a list of trailers being rented enter: rented")
+    print("To view a list of trailers available enter: available")
+    print("To add a trailer enter: add")
 
 if __name__ == "__main__":
     main()

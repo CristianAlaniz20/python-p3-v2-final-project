@@ -117,6 +117,7 @@ def search_for_client():
                 print(spacing)
 
 def show_trailer_info(trailer):
+    print(f"Trailer #: {trailer.id}") 
     if trailer.client_renting_trailer:
         select_client_by_number(trailer.client_renting_trailer)
     else:
@@ -124,33 +125,11 @@ def show_trailer_info(trailer):
     print(f"Available: {trailer.available}")
     print(spacing)
 
-#print list with ALL trailers, only trailers being rented, or only trailers available
-def list_trailers():
-    print("""
-    To view a list of all trailers enter: all
-    To view a list of trailers being rented enter: rented
-    To view a list of trailers available enter: available
-    To add a trailer enter: add
-    """)
-    _input = input("> ")
-    if _input == "all":
-        for trailer in Trailer.get_all():
-            print(f"Trailer #: {trailer.id}") 
-            show_trailer_info(trailer)
-    elif _input == "rented":
-        for trailer in Trailer.get_all():
-            if trailer.client_renting_trailer:
-                print(f"Trailer #: {trailer.id}") 
-                show_trailer_info(trailer)
-    elif _input == "available":
-        for trailer in Trailer.get_all():
-            if trailer.available == True:
-                print(f"Trailer #: {trailer.id}") 
-    elif _input == "add":
-        add_trailer()
+def list_trailers(condition=None):
+    if condition:
+        return [show_trailer_info(trailer) for trailer in Trailer.get_all() if condition]
     else:
-        print("Invalid input. Please try again.")
-        print(spacing)
+        return [show_trailer_info(trailer) for trailer in Trailer.get_all()]
 
 def search_for_trailer():
     print(spacing)
@@ -190,7 +169,7 @@ def update_trailer_client(trailer):
         first_name = input("First Name: ")
         last_name = input("Last Name: ")
         phone_number = input("Phone Number: ")
-
+        print(spacing)
         #Search for client with fullmatching first name, last name, and phone number
         existing_client = None
         clients = Client.get_all()
