@@ -26,7 +26,7 @@ def is_empty(lst):
     return len(lst) == 0
 
 def show_client_info(client):
-    print(f"Client #: {trailer.id}")
+    print(f"Client #: {client.id}")
     print(f"Client Name: {client.first_name} {client.last_name}")
     print(f"Phone Number: {client.phone_number}")
 

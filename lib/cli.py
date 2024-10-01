@@ -87,6 +87,7 @@ def client_menu(client, filtered_clients=None):
             update_client(client)
         elif choice == "d":
             delete_client(client)
+            main()
         elif choice == "v":
             pass
         else:
@@ -98,7 +99,7 @@ def search_for_trailer_verification_menu():
         choice = input("> ")
         if choice == "p":
             main()
-        elif choice == "y":
+        elif choice == "s":
             search_for_trailer_menu()
         else:
             invalid_input_message()
@@ -206,7 +207,7 @@ def client_view_menu():
 
 def search_for_trailer_verification_options():
     print("Enter 'p' to go to the previous menu")
-    print("Enter 'y' if you want to search for a trailer")
+    print("Enter 's' if you want to select a trailer")
 
 def search_for_trailer_options():
     print("Enter 'p' to go to the previous menu")
