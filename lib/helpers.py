@@ -137,9 +137,9 @@ def list_trailers(condition=None):
         [trailer_list.append(trailer) for trailer in Trailer.get_all()]
         return trailer_list
 
-def print_list(lst):
-    for trailer in lst:
-        show_trailer_info(trailer)
+def print_list(lst, function):
+    for item in lst:
+        function(item)
 
 def search_for_trailer():
     print(spacing)
@@ -227,7 +227,6 @@ def add_trailer():
         new_trailer = Trailer.create()
         print(spacing)
         print("Trailer successfully added!")
-        print(f"Trailer# {new_trailer.id}")
         show_trailer_info(new_trailer)
         print(spacing)
     except Exception as exc:

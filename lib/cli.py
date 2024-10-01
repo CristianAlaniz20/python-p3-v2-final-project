@@ -117,6 +117,7 @@ def search_for_trailer_menu():
                 update_trailer_client(searched_trailer)
             elif choice == "d":
                 delete_trailer(searched_trailer)
+                main()
             else:
                 invalid_input_message()
 
@@ -136,7 +137,7 @@ def list_trailers_menu():
             elif choice == "e":
                 exit_program()
             elif choice == "all":
-                print_list(trailer_list)
+                print_list(trailer_list, show_trailer_info())
                 search_for_trailer_verification_menu()
             elif choice == "rented":
                 is_rented = lambda trailer: trailer.client_renting_trailer is not None
@@ -145,7 +146,7 @@ def list_trailers_menu():
                     print("There are no trailers currently being rented")
                     list_trailers_menu()
                 else:
-                    print_list(filtered_trailer_list)
+                    print_list(filtered_trailer_list, show_trailer_info())
                     search_for_trailer_verification_menu()
             elif choice == "available":
                 is_available = lambda trailer: trailer.available is not False
@@ -154,7 +155,7 @@ def list_trailers_menu():
                     print("There no trailers currently available")
                     list_trailers_menu()
                 else:
-                    print_list(filtered_trailer_list)
+                    print_list(filtered_trailer_list, show_trailer_info())
                     search_for_trailer_verification_menu()
             elif choice == "add":
                 add_trailer()
