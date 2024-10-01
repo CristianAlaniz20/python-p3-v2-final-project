@@ -13,7 +13,20 @@ def exit_program():
     print("Program closed, goodbye!")
     exit()
 
+def print_list(lst):
+    for item in lst:
+        if isinstance(item, Client):
+            show_client_info(item)
+        elif isinstance(item, Trailer):
+            show_trailer_info(item)
+        else:
+            print("Error: items in list are not valid input")
+
+def is_empty(lst):
+    return len(lst) == 0
+
 def show_client_info(client):
+    print(f"Client #: {trailer.id}")
     print(f"Client Name: {client.first_name} {client.last_name}")
     print(f"Phone Number: {client.phone_number}")
 
@@ -25,8 +38,7 @@ def list_clients(clients=None):
         list_name = "Search Results:"
     print(spacing)
     print(list_name)
-    for client in clients:
-        print(f"{client.id}. {client.first_name} {client.last_name}")
+    print_list(clients)
     print(spacing)
 
 def select_client_by_number(choice):
@@ -125,9 +137,6 @@ def show_trailer_info(trailer):
     print(f"Available: {trailer.available}")
     print(spacing)
 
-def is_empty(lst):
-    return len(lst) == 0
-
 def list_trailers(condition=None):
     trailer_list = []
     if condition:
@@ -136,10 +145,6 @@ def list_trailers(condition=None):
     else:
         [trailer_list.append(trailer) for trailer in Trailer.get_all()]
         return trailer_list
-
-def print_list(lst, function):
-    for item in lst:
-        function(item)
 
 def search_for_trailer():
     print(spacing)
