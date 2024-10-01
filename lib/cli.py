@@ -25,12 +25,12 @@ def invalid_input_message():
 def main():
     create_db_tables()
     while True:
-        main_menu()
+        main_menu_options()
         choice = input("> ")
         if choice == "e":
             exit_program()
         elif choice == "vc":
-            view_client_menu()
+            view_all_clients_menu()
         elif choice == "sc":
             search_client_menu()
         elif choice == "vt":
@@ -40,13 +40,13 @@ def main():
         else:
             invalid_input_message()
 
-def view_client_menu(filtered_clients=None):
+def view_all_clients_menu(filtered_clients=None):
     list_clients(filtered_clients)
     while True:
         if filtered_clients:
-            search_clients_menu()
+            search_client_options()
         else:
-            view_all_clients_menu()
+            view_all_clients_options()
         choice = input("> ")
         if choice == "p":
             main()
@@ -65,7 +65,7 @@ def search_client_menu():
     if client_search_results:
         list_clients(client_search_results)
         while True:
-            search_clients_menu()
+            search_client_options()
             choice = input("> ")
             if choice == "p":
                 main()
@@ -78,10 +78,10 @@ def search_client_menu():
 
 def client_menu(client, filtered_clients=None):
     while True:
-        client_view_menu()
+        client_options()
         choice = input("> ")
         if choice == "p":
-            view_client_menu(filtered_clients)
+            view_all_clients_menu(filtered_clients)
         elif choice == "e":
             exit_program()
         elif choice == "u":
@@ -184,7 +184,7 @@ def empty_trailer_list_menu():
     #Add previous option
 
 
-def main_menu():
+def main_menu_options():
     print("Welcome, please select an option:")
     print("Enter 'e' to exit the program")
     print("Enter 'vc' to view list of clients")
@@ -192,18 +192,18 @@ def main_menu():
     print("Enter 'vt' to view list of trailers")
     print("Enter 'st' to search for a trailer")
 
-def view_all_clients_menu():
+def view_all_clients_options():
     print("Enter 'p' to go to the previous menu")
     print("Enter 'e' to exit the program")
     print("Enter 'a' to add a client")
     print("Or select a client by entering their corresponding number")
 
-def search_clients_menu():
+def search_client_options():
     print("Enter 'p' to go to the previous menu")
     print("Enter 'e' to exit the program")
     print("Or select a client by entering their corresponding number")
 
-def client_view_menu():
+def client_options():
     print("Enter 'p' to go to the previous menu")
     print("Enter 'e' to exit the program")
     print("Enter 'u' to update client details")
