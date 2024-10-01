@@ -15,7 +15,8 @@ from helpers import (
     list_trailers,
     add_trailer,
     is_empty,
-    print_list
+    print_list,
+    filter_trailers_by_client
 )
 
 def invalid_input_message():
@@ -89,7 +90,11 @@ def client_menu(client, filtered_clients=None):
             delete_client(client)
             main()
         elif choice == "v":
-            pass
+            filtered_trailer_list = filter_trailers_by_client(client)
+            if is_empty(filtered_trailer_list):
+                print(f"{client.first_name} {client.last_name} is currently not renting any trailers")
+            else:
+                [show_trailer_info(trailer) for trailer in filtered_trailer_list]
         else:
             invalid_input_message()
 

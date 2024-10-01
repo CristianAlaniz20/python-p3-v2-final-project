@@ -238,14 +238,11 @@ def add_trailer():
         print("Error: ", exc)
         print(spacing)
 
-#CLIENTS
-    #After search client results, even if client is not on the results list, if id entered, client is selected. FIX bug 
-
-#TRAILERS
-    #Attempt to assign client to trailer
-    #If client does not exist, give message that client does not exist, THEN
-    #Give option to create new Client
-    #Give client option to assign a trailer to them
-
-#Test Commit for new machine
-    #Hello From Macbook
+#Compare Client id with trailer client_renting_trailer number and return all matching trailers
+    #Step 1: Grab id of client
+def filter_trailers_by_client(client):
+    empty_trailer_list = []
+    for trailer in Trailer.get_all():
+        if client.id == trailer.client_renting_trailer:
+            empty_trailer_list.append(trailer)
+    return empty_trailer_list
