@@ -94,7 +94,7 @@ def client_menu(client, filtered_clients=None):
             if is_empty(filtered_trailer_list):
                 print(f"{client.first_name} {client.last_name} is currently not renting any trailers")
             else:
-                [show_trailer_info(trailer) for trailer in filtered_trailer_list]
+                print_list(filtered_trailer_list)
         else:
             invalid_input_message()
 
