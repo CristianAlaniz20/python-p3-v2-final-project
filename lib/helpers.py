@@ -142,55 +142,44 @@ def search_for_trailer():
     else:
         invalid_input_message()
 
-#If client already exists, assign client to trailer
-#Else 1. Say client does not exist and 2. Ask/give option to create the new client with information that was already put in.
-def update_trailer_client(trailer):
-    #print("""
-    #If you would like change trailer client to another client enter: change
-    #If you would like the trailer to have NO client enter: remove
-    #""")
-    _input = input("> ")
-    if _input == "remove":
-        try:
-            setattr(trailer, "client_renting_trailer", None)
-            setattr(trailer, "available", trailer.available)
-            trailer.update()
-            print("Succesfully updated!")
-            show_trailer_info(trailer)
-        except Exception as exc:
-            print(f"Error: ", exc)
-    elif _input == "change":
-        print("Enter the rentor's information:")
-        first_name = input("First Name: ")
-        last_name = input("Last Name: ")
-        phone_number = input("Phone Number: ")
-        #Search for client with fullmatching first name, last name, and phone number
-        existing_client = None
-        clients = Client.get_all()
-        for client in clients:
-            if client.first_name == first_name and client.last_name == last_name and client.phone_number == phone_number:
-                existing_client = client
-
-        if existing_client:
-            try:
-                setattr(trailer, "client_renting_trailer", existing_client.id)
-                setattr(trailer, "available", trailer.available)
-                trailer.update()
-                print("Succesfully updated!")
-                show_trailer_info(trailer)
-            except Exception as exc:
-                print(f"Error: ", exc)
-        else:
-            print(f"No client found matching {first_name} {last_name} {phone_number}")
-    else:
-        invalid_input_message()
-
 def check_for_exisiting_client(first_name, last_name, phone_number):
     existing_client = None
     for client in Client.get_all():
         if client.first_name == first_name and client.last_name == last_name and client.phone_number == phone_number:
             existing_client = client
     return existing_client
+
+def change_client_from_trailer(trailer):
+    print("Enter the client's information:")
+    first_name = input("First Name: ")
+    last_name = input("Last Name: ")
+    phone_number = input("Phone Number: ")
+
+    existing_client = check_for_exisiting_client(first_name, last_name, phone_number)
+
+    if existing_client:
+        try:
+            setattr(trailer, "client_renting_trailer", existing_client.id)
+            setattr(trailer, "available", trailer.available)
+            trailer.update()
+            print("Succesfully updated!")
+            show_trailer_info(trailer)
+        except Exception as exc:
+            print(f"Error: ", exc)
+    else:
+        print(f"No client found matching {first_name} {last_name} {phone_number}")
+
+
+def remove_client_from_trailer(trailer):
+    try:
+        setattr(trailer, "client_renting_trailer", None)
+        setattr(trailer, "available", trailer.available)
+        trailer.update()
+        print("Succesfully updated!")
+        show_trailer_info(trailer)
+    except Exception as exc:
+        print(f"Error: ", exc)
+
 
 def delete_trailer(trailer):
     print("""

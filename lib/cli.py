@@ -12,13 +12,15 @@ from helpers import (
     add_client,
     search_for_client,
     search_for_trailer,
-    update_trailer_client,
     delete_trailer,
     list_trailers,
     add_trailer,
     is_empty,
     print_list,
-    filter_trailers_by_client
+    filter_trailers_by_client,
+    check_for_exisiting_client,
+    change_client_from_trailer,
+    remove_client_from_trailer
 )
 
 def main():
@@ -125,7 +127,7 @@ def search_for_trailer_menu():
             elif choice == "e":
                 exit_program()
             elif choice == "u":
-                update_trailer_client(searched_trailer)
+                update_trailer_client_menu(searched_trailer)
             elif choice == "d":
                 delete_trailer(searched_trailer)
                 main()
@@ -192,8 +194,10 @@ def update_trailer_client_menu(trailer):
         choice = input("> ")
         if choice == "remove":
             remove_client_from_trailer(trailer)
+            main()
         elif choice == "change":
             change_client_from_trailer(trailer)
+            main()
         else:
             invalid_input_message()
 
