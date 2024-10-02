@@ -145,10 +145,10 @@ def search_for_trailer():
 #If client already exists, assign client to trailer
 #Else 1. Say client does not exist and 2. Ask/give option to create the new client with information that was already put in.
 def update_trailer_client(trailer):
-    print("""
-    If you would like change trailer client to another client enter: change
-    If you would like the trailer to have NO client enter: remove
-    """)
+    #print("""
+    #If you would like change trailer client to another client enter: change
+    #If you would like the trailer to have NO client enter: remove
+    #""")
     _input = input("> ")
     if _input == "remove":
         try:
@@ -164,7 +164,6 @@ def update_trailer_client(trailer):
         first_name = input("First Name: ")
         last_name = input("Last Name: ")
         phone_number = input("Phone Number: ")
-        print(spacing)
         #Search for client with fullmatching first name, last name, and phone number
         existing_client = None
         clients = Client.get_all()
@@ -185,6 +184,13 @@ def update_trailer_client(trailer):
             print(f"No client found matching {first_name} {last_name} {phone_number}")
     else:
         invalid_input_message()
+
+def check_for_exisiting_client(first_name, last_name, phone_number):
+    existing_client = None
+    for client in Client.get_all():
+        if client.first_name == first_name and client.last_name == last_name and client.phone_number == phone_number:
+            existing_client = client
+    return existing_client
 
 def delete_trailer(trailer):
     print("""

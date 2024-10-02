@@ -186,6 +186,17 @@ def empty_trailer_list_menu():
         else:
             invalid_input_message()
 
+def update_trailer_client_menu(trailer):
+    while True:
+        update_trailer_client_options()
+        choice = input("> ")
+        if choice == "remove":
+            remove_client_from_trailer(trailer)
+        elif choice == "change":
+            change_client_from_trailer(trailer)
+        else:
+            invalid_input_message()
+
 #Issues
     #If list is empty, show message to say that
     #Add previous option
@@ -254,6 +265,12 @@ def empty_trailer_list_options():
     HINT: It appears there are no trailers. Please select an option:
     Enter 'p' to go to the previous menu
     Enter 'a' to add a trailer
+    """)
+
+def update_trailer_client_options():
+    print("""
+    Enter 'change' to change trailer client to another client
+    Enter 'remove' to remove any client renting this trailer
     """)
 
 if __name__ == "__main__":
