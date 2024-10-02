@@ -2,6 +2,7 @@
 
 from helpers import (
     create_db_tables,
+    invalid_input_message,
     exit_program,
     list_clients,
     select_client_by_number,
@@ -18,9 +19,6 @@ from helpers import (
     print_list,
     filter_trailers_by_client
 )
-
-def invalid_input_message():
-    print("Invalid input. Please try again.")
 
 def main():
     create_db_tables()

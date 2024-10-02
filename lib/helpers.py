@@ -13,6 +13,9 @@ def exit_program():
     print("Program closed, goodbye!")
     exit()
 
+def invalid_input_message():
+    print("Invalid input. Please try again.")
+
 def print_list(lst):
     for item in lst:
         if isinstance(item, Client):
@@ -85,7 +88,7 @@ def delete_client(client):
         show_client_info(client)
         print(spacing)
     else:
-        print("Invalid input. Please try again.")
+        invalid_input_message()
         print(spacing)
 
 def add_client():
@@ -157,7 +160,7 @@ def search_for_trailer():
             print(f"Error: No trailer found matching {trailer_number} number.")
             print(spacing)
     else:
-        print("Error: Must enter a trailer number.")
+        invalid_input_message()
         print(spacing)
 
 #If client already exists, assign client to trailer
@@ -207,7 +210,7 @@ def update_trailer_client(trailer):
             print(f"No client found matching {first_name} {last_name} {phone_number}")
             print(spacing)
     else:
-        print("Invalid input. Please try again.")
+        invalid_input_message()
         print(spacing)
 
 def delete_trailer(trailer):
@@ -224,7 +227,7 @@ def delete_trailer(trailer):
         show_trailer_info(trailer)
         print(spacing)
     else:
-        print("Invalid input. Please try again.")
+        invalid_input_message()
         print(spacing)
 
 def add_trailer():
