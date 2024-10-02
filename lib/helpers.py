@@ -121,7 +121,6 @@ def show_trailer_info(trailer):
         select_client_by_number(trailer.client_renting_trailer)
     else:
         print("Client Renting Trailer: Nobody")
-    print(f"Available: {trailer.available}")
 
 def list_trailers(condition=None):
     trailer_list = []
