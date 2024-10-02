@@ -3,7 +3,9 @@
 from models.client import Client
 from models.trailer import Trailer
 
-spacing = "-----------------------------"
+def add_spacing():
+    spacing = "-----------------------------"
+    print(spacing)
 
 def create_db_tables():
     Client.create_table()
@@ -39,21 +41,16 @@ def list_clients(clients=None):
         list_name = "Clients List:"
     else:
         list_name = "Search Results:"
-    print(spacing)
     print(list_name)
     print_list(clients)
-    print(spacing)
 
 def select_client_by_number(choice):
     try:
         client = Client.find_by_id(choice)
-        print(spacing)
         show_client_info(client)
-        print(spacing)
         return client
     except:
         print(f"Error: no client found for {choice}")
-        print(spacing)
 
 def update_client(client):
     print("HINT: first name as 'first_name', last name as 'last_name', or phone number as 'phone_number'")
@@ -63,16 +60,12 @@ def update_client(client):
         try:  
             setattr(client, attribute, new_value)
             client.update()
-            print(spacing)
             print("Succesfully updated!")
             show_client_info(client)
-            print(spacing)
         except Exception as exc:
             print(f"Error: ", exc)
-            print(spacing)
     else:
         print("Seems you had a typo typing in the client detail to update. Please try again.")
-        print(spacing)
         
 def delete_client(client):
     print("""
@@ -83,13 +76,10 @@ def delete_client(client):
         client.delete()
         print(f"Client: {client.first_name} {client.last_name} succesfully deleted")
     elif _input == "no":
-        print(spacing)
         print("Client NOT deleted")
         show_client_info(client)
-        print(spacing)
     else:
         invalid_input_message()
-        print(spacing)
 
 def add_client():
     print("HINT: Capitalize first letter of each name and enter phone number with XXX-XXX-XXXX format.")
@@ -98,16 +88,12 @@ def add_client():
     phone_number = input("Enter the new client's phone number: ")
     try:
         new_client = Client.create(first_name, last_name, phone_number)
-        print(spacing)
         print("Client successfully added!")
         show_client_info(new_client)
-        print(spacing)
     except Exception as exc:
         print("Error: ", exc)
-        print(spacing)
 
 def search_for_client():
-        print(spacing)
         print("Capitalize first letter of each name and enter phone number with XXX-XXX-XXXX format.")
         print("HINT: To skip entry leave blank and press enter.")
         first_name = input("Enter client's first name: ")
@@ -116,7 +102,6 @@ def search_for_client():
 
         if not first_name and not last_name and not phone_number:
             print("No clients found. At least one field must not be empty.")
-            print(spacing)
         elif first_name or last_name or phone_number:
             clients = Client.get_all()
             results = []
@@ -129,7 +114,6 @@ def search_for_client():
                 return results
             else:
                 print(f"Error: Check spelling or phone number format. No client found for {first_name} {last_name} {phone_number}")
-                print(spacing)
 
 def show_trailer_info(trailer):
     print(f"Trailer #: {trailer.id}") 
@@ -138,7 +122,6 @@ def show_trailer_info(trailer):
     else:
         print("Client Renting Trailer: Nobody")
     print(f"Available: {trailer.available}")
-    print(spacing)
 
 def list_trailers(condition=None):
     trailer_list = []
@@ -150,7 +133,6 @@ def list_trailers(condition=None):
         return trailer_list
 
 def search_for_trailer():
-    print(spacing)
     trailer_number = input("Type in trailer number: ")
     if trailer_number:
         if (trailer := Trailer.find_by_id(int(trailer_number))):
@@ -158,10 +140,8 @@ def search_for_trailer():
             return trailer
         else:
             print(f"Error: No trailer found matching {trailer_number} number.")
-            print(spacing)
     else:
         invalid_input_message()
-        print(spacing)
 
 #If client already exists, assign client to trailer
 #Else 1. Say client does not exist and 2. Ask/give option to create the new client with information that was already put in.
@@ -178,10 +158,8 @@ def update_trailer_client(trailer):
             trailer.update()
             print("Succesfully updated!")
             show_trailer_info(trailer)
-            print(spacing)
         except Exception as exc:
             print(f"Error: ", exc)
-            print(spacing)
     elif _input == "change":
         print("Enter the rentor's information:")
         first_name = input("First Name: ")
@@ -202,16 +180,12 @@ def update_trailer_client(trailer):
                 trailer.update()
                 print("Succesfully updated!")
                 show_trailer_info(trailer)
-                print(spacing)
             except Exception as exc:
                 print(f"Error: ", exc)
-                print(spacing)
         else:
             print(f"No client found matching {first_name} {last_name} {phone_number}")
-            print(spacing)
     else:
         invalid_input_message()
-        print(spacing)
 
 def delete_trailer(trailer):
     print("""
@@ -222,24 +196,18 @@ def delete_trailer(trailer):
         trailer.delete()
         print(f"Trailer succesfully deleted")
     elif _input == "no":
-        print(spacing)
         print("Trailer NOT deleted")
         show_trailer_info(trailer)
-        print(spacing)
     else:
         invalid_input_message()
-        print(spacing)
 
 def add_trailer():
     try:
         new_trailer = Trailer.create()
-        print(spacing)
         print("Trailer successfully added!")
         show_trailer_info(new_trailer)
-        print(spacing)
     except Exception as exc:
         print("Error: ", exc)
-        print(spacing)
 
 #Compare Client id with trailer client_renting_trailer number and return all matching trailers
     #Step 1: Grab id of client

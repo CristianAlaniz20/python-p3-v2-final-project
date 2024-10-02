@@ -3,6 +3,7 @@
 from helpers import (
     create_db_tables,
     invalid_input_message,
+    add_spacing,
     exit_program,
     list_clients,
     select_client_by_number,
@@ -23,6 +24,7 @@ from helpers import (
 def main():
     create_db_tables()
     while True:
+        add_spacing()
         main_menu_options()
         choice = input("> ")
         if choice == "e":
@@ -41,6 +43,7 @@ def main():
 def view_all_clients_menu(filtered_clients=None):
     list_clients(filtered_clients)
     while True:
+        add_spacing()
         if filtered_clients:
             search_client_options()
         else:
@@ -63,6 +66,7 @@ def search_client_menu():
     if client_search_results:
         list_clients(client_search_results)
         while True:
+            add_spacing()
             search_client_options()
             choice = input("> ")
             if choice == "p":
@@ -76,6 +80,7 @@ def search_client_menu():
 
 def client_menu(client, filtered_clients=None):
     while True:
+        add_spacing()
         client_options()
         choice = input("> ")
         if choice == "p":
@@ -98,6 +103,7 @@ def client_menu(client, filtered_clients=None):
 
 def search_for_trailer_verification_menu():
     while True:
+        add_spacing()
         search_for_trailer_verification_options()
         choice = input("> ")
         if choice == "p":
@@ -111,6 +117,7 @@ def search_for_trailer_menu():
     (searched_trailer := search_for_trailer())
     if searched_trailer:
         while True:
+            add_spacing()
             search_for_trailer_options()
             choice = input("> ")
             if choice == "p":
@@ -128,6 +135,7 @@ def search_for_trailer_menu():
 #Should A. Give option to select type of list. / B. Be able to select a trailer from the list. / C. Give action options for trailer chosen.
 def list_trailers_menu():
     while True:
+        add_spacing()
         #If no trailers in db, redirect to empty_trailer_list_menu
         trailer_list = list_trailers()
         if is_empty(trailer_list):
@@ -168,6 +176,7 @@ def list_trailers_menu():
 
 def empty_trailer_list_menu():
     while True:
+        add_spacing()
         empty_trailer_list_options()
         choice = input("> ")
         if choice == "p":
