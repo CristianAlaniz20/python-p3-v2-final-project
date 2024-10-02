@@ -192,53 +192,69 @@ def empty_trailer_list_menu():
 
 
 def main_menu_options():
-    print("Welcome, please select an option:")
-    print("Enter 'e' to exit the program")
-    print("Enter 'vc' to view list of clients")
-    print("Enter 'sc' to search for a client")
-    print("Enter 'vt' to view list of trailers")
-    print("Enter 'st' to search for a trailer")
+    print("""
+    Welcome, please select an option:
+    Enter 'e' to exit the program
+    Enter 'vc' to view list of clients
+    Enter 'sc' to search for a client
+    Enter 'vt' to view list of trailers
+    Enter 'st' to search for a trailer
+    """)
 
 def view_all_clients_options():
-    print("Enter 'p' to go to the previous menu")
-    print("Enter 'e' to exit the program")
-    print("Enter 'a' to add a client")
-    print("Or select a client by entering their corresponding number")
+    print("""
+    Enter 'p' to go to the previous menu
+    Enter 'e' to exit the program
+    Enter 'a' to add a client
+    Or select a client by entering their corresponding number
+    """)
 
 def search_client_options():
-    print("Enter 'p' to go to the previous menu")
-    print("Enter 'e' to exit the program")
-    print("Or select a client by entering their corresponding number")
+    print("""
+    Enter 'p' to go to the previous menu
+    Enter 'e' to exit the program
+    Or select a client by entering their corresponding number
+    """)
 
 def client_options():
-    print("Enter 'p' to go to the previous menu")
-    print("Enter 'e' to exit the program")
-    print("Enter 'u' to update client details")
-    print("Enter 'd' to delete this client")
-    print("Enter 'v' to view all the trailers this client has rented")
+    print("""
+    Enter 'p' to go to the previous menu
+    Enter 'e' to exit the program
+    Enter 'u' to update client details
+    Enter 'd' to delete this client
+    Enter 'v' to view all the trailers this client has rented
+    """)
 
 def search_for_trailer_verification_options():
-    print("Enter 'p' to go to the previous menu")
-    print("Enter 's' if you want to select a trailer")
+    print("""
+    Enter 'p' to go to the previous menu
+    Enter 's' if you want to select a trailer
+    """)
 
 def search_for_trailer_options():
-    print("Enter 'p' to go to the previous menu")
-    print("Enter 'e' to exit the program")
-    print("Enter 'u' to update client renting this trailer")
-    print("Enter 'd' to delete this trailer")
+    print("""
+    Enter 'p' to go to the previous menu
+    Enter 'e' to exit the program
+    Enter 'u' to update client renting this trailer
+    Enter 'd' to delete this trailer
+    """)
 
 def list_trailers_options():
-    print("Enter 'p' to go to the previous menu")
-    print("Enter 'e' to exit the program")
-    print("Enter 'all' to view a list of all trailers")
-    print("Enter 'rented' to view a list of trailers being rented")
-    print("Enter 'available' to view a list of trailers available")
-    print("Enter 'add' to add a trailer")
+    print("""
+    Enter 'p' to go to the previous menu
+    Enter 'e' to exit the program
+    Enter 'all' to view a list of all trailers
+    Enter 'rented' to view a list of trailers being rented
+    Enter 'available' to view a list of trailers available
+    Enter 'add' to add a trailer
+    """)
 
 def empty_trailer_list_options():
-    print("HINT: It appears there are no trailers. Please select an option:")
-    print("Enter 'p' to go to the previous menu")
-    print("Enter 'a' to add a trailer")
+    print("""
+    HINT: It appears there are no trailers. Please select an option:
+    Enter 'p' to go to the previous menu
+    Enter 'a' to add a trailer
+    """)
 
 if __name__ == "__main__":
     main()
