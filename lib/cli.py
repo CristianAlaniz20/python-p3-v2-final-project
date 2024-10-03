@@ -21,7 +21,8 @@ from helpers import (
     check_for_exisiting_client,
     change_client_from_trailer,
     remove_client_from_trailer,
-    create_trailer_with_client
+    create_trailer_with_client,
+    show_client_info
 )
 
 def main():
@@ -212,9 +213,11 @@ def list_trailers_of_client_menu(trailer_list, client):
 
 def add_trailer_to_client_menu(client):
     while True:
+        add_spacing()
         add_trailer_to_client_options()
         choice = input("> ")
         if choice == "p":
+            show_client_info(client)
             client_menu(client)
         elif choice == "a":
             create_trailer_with_client(client)
@@ -295,6 +298,12 @@ def update_trailer_client_options():
     print("""
     Enter 'change' to change trailer client to another client
     Enter 'remove' to remove any client renting this trailer
+    """)
+
+def add_trailer_to_client_options():
+    print("""
+    Enter 'p' to go to the previous menu
+    Enter 'a' to create a new trailer with this client assigned to it
     """)
 
 if __name__ == "__main__":

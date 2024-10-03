@@ -211,3 +211,9 @@ def filter_trailers_by_client(client):
         if client.id == trailer.client_renting_trailer:
             empty_trailer_list.append(trailer)
     return empty_trailer_list
+
+def create_trailer_with_client(client):
+    new_trailer = Trailer.create()
+    setattr(new_trailer, "client_renting_trailer", client.id)
+    new_trailer.update()
+    show_trailer_info(new_trailer)    
