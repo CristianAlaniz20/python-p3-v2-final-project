@@ -20,7 +20,8 @@ from helpers import (
     filter_trailers_by_client,
     check_for_exisiting_client,
     change_client_from_trailer,
-    remove_client_from_trailer
+    remove_client_from_trailer,
+    create_trailer_with_client
 )
 
 def main():
@@ -96,10 +97,7 @@ def client_menu(client, filtered_clients=None):
             main()
         elif choice == "v":
             filtered_trailer_list = filter_trailers_by_client(client)
-            if is_empty(filtered_trailer_list):
-                print(f"{client.first_name} {client.last_name} is currently not renting any trailers")
-            else:
-                print_list(filtered_trailer_list)
+            list_trailers_of_client_menu(filtered_trailer_list, client)
         else:
             invalid_input_message()
 
@@ -198,6 +196,28 @@ def update_trailer_client_menu(trailer):
         elif choice == "change":
             change_client_from_trailer(trailer)
             main()
+        else:
+            invalid_input_message()
+
+def list_trailers_of_client_menu(trailer_list, client):
+    if is_empty(trailer_list):
+        print(f"{client.first_name} {client.last_name} is currently not renting any trailers")
+        add_trailer_to_client_menu(client)
+                #Show option to, A. go back previous menu 
+                #B. ask if he wants to rent a trailer
+                    #If available trailer, assign client to an available trailer
+                    #Else give option to create a new trailer and assign client to trailer
+    else:
+        print_list(trailer_list)
+
+def add_trailer_to_client_menu(client):
+    while True:
+        add_trailer_to_client_options()
+        choice = input("> ")
+        if choice == "p":
+            client_menu(client)
+        elif choice == "a":
+            create_trailer_with_client(client)
         else:
             invalid_input_message()
 
