@@ -181,6 +181,7 @@ def empty_trailer_list_menu():
             main()
         elif choice == "a":
             add_trailer()
+            main()
         else:
             invalid_input_message()
 
@@ -214,6 +215,7 @@ def add_trailer_to_client_menu(client):
             client_menu(client)
         elif choice == "a":
             create_trailer_with_client(client)
+            client_menu(client)
         else:
             invalid_input_message()
 

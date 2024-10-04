@@ -213,5 +213,6 @@ def filter_trailers_by_client(client):
 def create_trailer_with_client(client):
     new_trailer = Trailer.create()
     setattr(new_trailer, "client_renting_trailer", client.id)
+    setattr(new_trailer, "available", new_trailer.available)
     new_trailer.update()
     show_trailer_info(new_trailer)    
