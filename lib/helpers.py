@@ -220,4 +220,4 @@ def create_trailer_with_client(client):
 def remove_client_from_all_trailers(client):
     for trailer in Trailer.get_all():
         if trailer.client_renting_trailer == client.id:
-            remove_client_from_trailer(trailer) 
+            remove_client_from_trailer(trailer)

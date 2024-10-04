@@ -95,8 +95,8 @@ def client_menu(client, filtered_clients=None):
         elif choice == "u":
             update_client(client)
         elif choice == "d":
-            delete_client(client)
             remove_client_from_all_trailers(client)
+            delete_client(client)
             main()
         elif choice == "v":
             filtered_trailer_list = filter_trailers_by_client(client)
