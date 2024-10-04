@@ -202,9 +202,7 @@ def add_trailer():
         show_trailer_info(new_trailer)
     except Exception as exc:
         print("Error: ", exc)
-
-#Compare Client id with trailer client_renting_trailer number and return all matching trailers
-    #Step 1: Grab id of client
+        
 def filter_trailers_by_client(client):
     empty_trailer_list = []
     for trailer in Trailer.get_all():

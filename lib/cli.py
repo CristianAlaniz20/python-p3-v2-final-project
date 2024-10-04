@@ -133,15 +133,12 @@ def search_for_trailer_menu():
             else:
                 invalid_input_message()
 
-#Should A. Give option to select type of list. / B. Be able to select a trailer from the list. / C. Give action options for trailer chosen.
 def list_trailers_menu():
     while True:
         add_spacing()
-        #If no trailers in db, redirect to empty_trailer_list_menu
         trailer_list = list_trailers()
         if is_empty(trailer_list):
             empty_trailer_list_menu()
-        #Else execute code underneath
         else:
             list_trailers_options()
             choice = input("> ")
@@ -204,10 +201,6 @@ def list_trailers_of_client_menu(trailer_list, client):
     if is_empty(trailer_list):
         print(f"{client.first_name} {client.last_name} is currently not renting any trailers")
         add_trailer_to_client_menu(client)
-                #Show option to, A. go back previous menu 
-                #B. ask if he wants to rent a trailer
-                    #If available trailer, assign client to an available trailer
-                    #Else give option to create a new trailer and assign client to trailer
     else:
         print_list(trailer_list)
 
@@ -223,10 +216,6 @@ def add_trailer_to_client_menu(client):
             create_trailer_with_client(client)
         else:
             invalid_input_message()
-
-#Issues
-    #If list is empty, show message to say that
-    #Add previous option
 
 
 def main_menu_options():
