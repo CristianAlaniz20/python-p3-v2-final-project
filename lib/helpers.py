@@ -73,6 +73,7 @@ def delete_client(client):
     Enter 'yes' or 'no'""")
     _input = input("> ")
     if _input == "yes":
+        remove_client_from_all_trailers(client)
         client.delete()
         print(f"Client: {client.first_name} {client.last_name} succesfully deleted")
     elif _input == "no":

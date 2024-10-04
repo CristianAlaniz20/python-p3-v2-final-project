@@ -22,9 +22,8 @@ from helpers import (
     change_client_from_trailer,
     remove_client_from_trailer,
     create_trailer_with_client,
-    show_client_info,
-    remove_client_from_all_trailers
-)
+    show_client_info
+    )
 
 def main():
     create_db_tables()
@@ -95,7 +94,6 @@ def client_menu(client, filtered_clients=None):
         elif choice == "u":
             update_client(client)
         elif choice == "d":
-            remove_client_from_all_trailers(client)
             delete_client(client)
             main()
         elif choice == "v":
