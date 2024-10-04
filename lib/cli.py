@@ -22,7 +22,8 @@ from helpers import (
     change_client_from_trailer,
     remove_client_from_trailer,
     create_trailer_with_client,
-    show_client_info
+    show_client_info,
+    remove_client_from_all_trailers
 )
 
 def main():
@@ -95,6 +96,7 @@ def client_menu(client, filtered_clients=None):
             update_client(client)
         elif choice == "d":
             delete_client(client)
+            remove_client_from_all_trailers(client)
             main()
         elif choice == "v":
             filtered_trailer_list = filter_trailers_by_client(client)

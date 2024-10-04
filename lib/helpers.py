@@ -215,4 +215,9 @@ def create_trailer_with_client(client):
     setattr(new_trailer, "client_renting_trailer", client.id)
     setattr(new_trailer, "available", new_trailer.available)
     new_trailer.update()
-    show_trailer_info(new_trailer)    
+    show_trailer_info(new_trailer)   
+
+def remove_client_from_all_trailers(client):
+    for trailer in Trailer.get_all():
+        if trailer.client_renting_trailer == client.id:
+            remove_client_from_trailer(trailer) 
