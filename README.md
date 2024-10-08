@@ -1,172 +1,72 @@
-# Phase 3 CLI+ORM Project Template
+# Trailer Rental Application
 
-## Learning Goals
+This application is built for someone who is running a trailer rental business. It allows to create, add, edit, and delete clients and trailers.
 
-- Discuss the basic directory structure of a CLI.
-- Outline the first steps in building a CLI.
+## Get Started
 
----
-
-## Introduction
-
-You now have a basic idea of what constitutes a CLI. Fork and clone this lesson
-for a project template for your CLI.
-
-Take a look at the directory structure:
-
-```console
-.
-├── Pipfile
-├── Pipfile.lock
-├── README.md
-└── lib
-    ├── models
-    │   ├── __init__.py
-    │   └── model_1.py
-    ├── cli.py
-    ├── debug.py
-    └── helpers.py
-```
-
-Note: The directory also includes two files named `CONTRIBUTING.md` and
-`LICENSE.md` that are specific to Flatiron's curriculum. You can disregard or
-delete the files if you want.
-
----
-
-## Generating Your Environment
-
-You might have noticed in the file structure- there's already a Pipfile!
-
-Install any additional dependencies you know you'll need for your project by
-adding them to the `Pipfile`. Then run the commands:
-
-```console
-pipenv install
-pipenv shell
-```
-
----
-
-## Generating Your CLI
-
-A CLI is, simply put, an interactive script and prompts the user and performs
-operations based on user input.
-
-The project template has a sample CLI in `lib/cli.py` that looks like this:
-
-```py
-# lib/cli.py
-
-from helpers import (
-    exit_program,
-    helper_1
-)
+Fork and clone this repository into your local machine using the command prompt or terminal(Depending on your operating system). Then change your directory to the applications directory using the command "cd" followed by the name or path of the directory.
 
 
-def main():
-    while True:
-        menu()
-        choice = input("> ")
-        if choice == "0":
-            exit_program()
-        elif choice == "1":
-            helper_1()
-        else:
-            print("Invalid choice")
+Having trouble doing this? Check out the article.
+[How To Fork and Clone Repository](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
 
 
-def menu():
-    print("Please select an option:")
-    print("0. Exit the program")
-    print("1. Some useful function")
+## Open Application
 
+Once inside the directory, run the command:
 
-if __name__ == "__main__":
-    main()
-```
+'python lib/cli.py'
 
-The helper functions are located in `lib/helpers.py`:
+This will open the application.
 
-```py
-# lib/helpers.py
+## Usage
 
-def helper_1():
-    print("Performing useful function#1.")
+The application has many useful attributes to help you run your trailer renting business. You can add, update, and delete both clients and trailers. 
 
+Other features include being able to access a list of all clients as well as a list of all the trailers in the system.
 
-def exit_program():
-    print("Goodbye!")
-    exit()
-```
+You can also search for a particular client or trailer. Explore all the application has to offer by navigating through all the options available.
 
-You can run the template CLI with `python lib/cli.py`, or include the shebang
-and make it executable with `chmod +x`. The template CLI will ask for input, do
-some work, and accomplish some sort of task.
+## Clients
 
-Past that, CLIs can be whatever you'd like, as long as you follow the project
-requirements.
+### Add Client
 
-Of course, you will update `lib/cli.py` with prompts that are appropriate for
-your application, and you will update `lib/helpers.py` to replace `helper_1()`
-with a useful function based on the specific problem domain you decide to
-implement, along with adding other helper functions to the module.
+Enter the view clients menu by entering 'vc'. Inside the client menu, enter 'a' to add a client.
 
-In the `lib/models` folder, you should rename `model_1.py` with the name of a
-data model class from your specific problem domain, and add other classes to the
-folder as needed. The file `lib/models/__init__.py` has been initialized to
-create the necessary database constants. You need to add import statements to
-the various data model classes in order to use the database constants.
+![add client gif](/Users/cristianalaniz/Downloads/ScreenRecording2024-10-06at12.43.07PM-ezgif.com-video-to-gif-converter.mov)
 
-You are also welcome to implement a different module and directory structure.
-However, your project should be well organized, modular, and follow the design
-principal of separation of concerns, which means you should separate code
-related to:
+### Update Client 
 
-- User interface
-- Data persistence
-- Problem domain rules and logic
+First search for the client you are wanting to update. Once client is found and selected, enter 'u' to update the client's information.
 
----
+![update client gif](/Users/cristianalaniz/Downloads/ScreenRecording2024-10-06at5.12.08PM-ezgif.com-video-to-gif-converter.mov)
 
-## Updating README.md
+### Delete Client
 
-`README.md` is a Markdown file that should describe your project. You will
-replace the contents of this `README.md` file with a description of **your**
-actual project.
+In similar fashion to updating the client, you must search and select the client you want to delete. Once the client is selected, enter 'd' and then 'yes' inside the delete menu to succesfully delete the client.
 
-Markdown is not a language that we cover in Flatiron's Software Engineering
-curriculum, but it's not a particularly difficult language to learn (if you've
-ever left a comment on Reddit, you might already know the basics). Refer to the
-cheat sheet in this assignments's resources for a basic guide to Markdown.
+![delete client gif](/Users/cristianalaniz/Downloads/ScreenRecording2024-10-06at5.30.06PM-ezgif.com-video-to-gif-converter.mov)
 
-### What Goes into a README?
+When the client is deleted, all trailers assigned to this client automatically remove this client as the client renting the trailer.
 
-This README serves as a template. Replace the contents of this file to describe
-the important files in your project and describe what they do. Each Python file
-that you edit should get at least a paragraph, and each function should be
-described with a sentence or two.
+## Trailers
 
-Describe your actual CLI script first, and with a good level of detail. The rest
-should be ordered by importance to the user. (Probably functions next, then
-models.)
+This application has similar functions to the clients, allowing you to add, update, and delete trailers.
 
-Screenshots and links to resources that you used throughout are also useful to
-users and collaborators, but a little more syntactically complicated. Only add
-these in if you're feeling comfortable with Markdown.
+### Add Trailer
 
----
+First enter the list trailer menu by entering 'vt'. Once inside the menu, enter 'add' to add a new blank trailer.
 
-## Conclusion
+![add trailer gif](/Users/cristianalaniz/Downloads/ScreenRecording2024-10-06at5.45.40PM-ezgif.com-video-to-gif-converter.mov)
 
-A lot of work goes into a good CLI, but it all relies on concepts that you've
-practiced quite a bit by now. Hopefully this template and guide will get you off
-to a good start with your Phase 3 Project.
+### Update Trailer
 
-Happy coding!
+Once you search and have selected the trailer you want to update, enter 'u' to update, then 'change', and follow the prompts.
 
----
+![update trailer gif](/Users/cristianalaniz/Downloads/Updatetrailer-ezgif.com-video-to-gif-converter.mov)
 
-## Resources
+### Delete Trailer
 
-- [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
+As with the other features, ensure you have selected the trailer you would like delete. Once selected enter 'd' and then 'yes' to delete the trailer.
+
+![delete trailer gif](/Users/cristianalaniz/Downloads/Deletetrailer-ezgif.com-video-to-gif-converter.mov)

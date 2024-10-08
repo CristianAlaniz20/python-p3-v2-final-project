@@ -59,7 +59,6 @@ def view_all_clients_menu(filtered_clients=None):
             exit_program()
         elif choice == 'a':
             add_client()
-            list_clients(filtered_clients)
         elif (client := select_client_by_number(choice)):
             client_menu(client)
         else:
