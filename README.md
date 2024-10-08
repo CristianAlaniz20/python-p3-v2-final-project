@@ -33,19 +33,19 @@ You can also search for a particular client or trailer. Explore all the applicat
 
 Enter the view clients menu by entering 'vc'. Inside the client menu, enter 'a' to add a client.
 
-![add client gif](Addclient-ezgif.com-video-to-gif-converter.gif)
+![add client gif](gif/Addclient-ezgif.com-video-to-gif-converter.gif)
 
 ### Update Client 
 
 First search for the client you are wanting to update. Once client is found and selected, enter 'u' to update the client's information.
 
-![update client gif](Updateclient-ezgif.com-video-to-gif-converter.gif)
+![update client gif](gif/Updateclient-ezgif.com-video-to-gif-converter.gif)
 
 ### Delete Client
 
 In similar fashion to updating the client, you must search and select the client you want to delete. Once the client is selected, enter 'd' and then 'yes' inside the delete menu to succesfully delete the client.
 
-![delete client gif](Deleteclient-ezgif.com-video-to-gif-converter.gif)
+![delete client gif](gif/Deleteclient-ezgif.com-video-to-gif-converter.gif)
 
 When the client is deleted, all trailers assigned to this client automatically remove this client as the client renting the trailer.
 
@@ -57,16 +57,16 @@ This application has similar functions to the clients, allowing you to add, upda
 
 First enter the list trailer menu by entering 'vt'. Once inside the menu, enter 'add' to add a new blank trailer.
 
-![add trailer gif](Addtrailer-ezgif.com-video-to-gif-converter.gif)
+![add trailer gif](gif/Addtrailer-ezgif.com-video-to-gif-converter.gif)
 
 ### Update Trailer
 
 Once you search and have selected the trailer you want to update, enter 'u' to update, then 'change', and follow the prompts.
 
-![update trailer gif](Updatetrailer-ezgif.com-video-to-gif-converter.gif)
+![update trailer gif](gif/Updatetrailer-ezgif.com-video-to-gif-converter.gif)
 
 ### Delete Trailer
 
 As with the other features, ensure you have selected the trailer you would like delete. Once selected enter 'd' and then 'yes' to delete the trailer.
 
-![delete trailer gif](Deletetrailer-ezgif.com-video-to-gif-converter.gif)
+![delete trailer gif](gif/Deletetrailer-ezgif.com-video-to-gif-converter.gif)
