@@ -70,3 +70,7 @@ Once you search and have selected the trailer you want to update, enter 'u' to u
 As with the other features, ensure you have selected the trailer you would like delete. Once selected enter 'd' and then 'yes' to delete the trailer.
 
 ![delete trailer gif](gif/Deletetrailer-ezgif.com-video-to-gif-converter.gif)
+
+## Contributions
+
+If you have any questions or think you could help with the development, open an issue and we will get back to you.
