@@ -33,19 +33,19 @@ You can also search for a particular client or trailer. Explore all the applicat
 
 Enter the view clients menu by entering 'vc'. Inside the client menu, enter 'a' to add a client.
 
-![add client gif](/Users/cristianalaniz/Downloads/ScreenRecording2024-10-06at12.43.07PM-ezgif.com-video-to-gif-converter.mov)
+![add client gif](Addclient-ezgif.com-video-to-gif-converter.gif)
 
 ### Update Client 
 
 First search for the client you are wanting to update. Once client is found and selected, enter 'u' to update the client's information.
 
-![update client gif](/Users/cristianalaniz/Downloads/ScreenRecording2024-10-06at5.12.08PM-ezgif.com-video-to-gif-converter.mov)
+![update client gif](Updateclient-ezgif.com-video-to-gif-converter.gif)
 
 ### Delete Client
 
 In similar fashion to updating the client, you must search and select the client you want to delete. Once the client is selected, enter 'd' and then 'yes' inside the delete menu to succesfully delete the client.
 
-![delete client gif](/Users/cristianalaniz/Downloads/ScreenRecording2024-10-06at5.30.06PM-ezgif.com-video-to-gif-converter.mov)
+![delete client gif](Deleteclient-ezgif.com-video-to-gif-converter.gif)
 
 When the client is deleted, all trailers assigned to this client automatically remove this client as the client renting the trailer.
 
@@ -57,16 +57,16 @@ This application has similar functions to the clients, allowing you to add, upda
 
 First enter the list trailer menu by entering 'vt'. Once inside the menu, enter 'add' to add a new blank trailer.
 
-![add trailer gif](/Users/cristianalaniz/Downloads/ScreenRecording2024-10-06at5.45.40PM-ezgif.com-video-to-gif-converter.mov)
+![add trailer gif](Addtrailer-ezgif.com-video-to-gif-converter.gif)
 
 ### Update Trailer
 
 Once you search and have selected the trailer you want to update, enter 'u' to update, then 'change', and follow the prompts.
 
-![update trailer gif](/Users/cristianalaniz/Downloads/Updatetrailer-ezgif.com-video-to-gif-converter.mov)
+![update trailer gif](Updatetrailer-ezgif.com-video-to-gif-converter.gif)
 
 ### Delete Trailer
 
 As with the other features, ensure you have selected the trailer you would like delete. Once selected enter 'd' and then 'yes' to delete the trailer.
 
-![delete trailer gif](/Users/cristianalaniz/Downloads/Deletetrailer-ezgif.com-video-to-gif-converter.mov)
+![delete trailer gif](Deletetrailer-ezgif.com-video-to-gif-converter.gif)
